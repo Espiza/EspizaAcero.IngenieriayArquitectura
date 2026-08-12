@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espiza Acero | Ingeniería & Arquitectura </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Segoe UI',Arial,sans-serif;color:#333;}
+
+    .topbar{
+      background:#1a1a2e;color:#aaa;font-size:12px;
+      padding:6px 40px;display:flex;justify-content:flex-end;gap:20px;flex-wrap:wrap;
+    }
+    .topbar a{color:#aaa;text-decoration:none;}
+    .topbar a:hover{color:#4fc3f7;}
+
+    nav{
+      background:#fff;padding:14px 40px;
+      display:flex;align-items:center;justify-content:space-between;
+      flex-wrap:wrap;gap:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      position:sticky;top:0;z-index:100;
+    }
+    .logo{font-size:20px;font-weight:bold;color:#1a1a2e;letter-spacing:1px;}
+    .logo span{color:#2980b9;}
+    .nav-links{display:flex;flex-wrap:wrap;gap:6px;list-style:none;}
+    .nav-links>li{position:relative;}
+    .nav-links>li>a{
+      color:#333;text-decoration:none;font-size:13px;
+      padding:8px 12px;display:block;border-radius:4px;
+      transition:background .2s,color .2s;font-weight:600;
+    }
+    .nav-links>li>a:hover,.nav-links>li>a.active{background:#2980b9;color:#fff;}
+    .dropdown{
+      display:none;position:absolute;top:100%;left:0;
+      background:#fff;min-width:200px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+      border-radius:6px;overflow:hidden;z-index:200;
+    }
+    .nav-links>li:hover .dropdown{display:block;}
+    .dropdown a{
+      display:block;padding:10px 16px;color:#333;
+      text-decoration:none;font-size:13px;
+      border-bottom:1px solid #f0f0f0;transition:background .2s;
+    }
+    .dropdown a:hover{background:#eaf4fb;color:#2980b9;}
+
+    .slider{position:relative;overflow:hidden;height:480px;background:#0f3460;}
+    .slides{display:flex;transition:transform .6s ease;height:100%;}
+    .slide{
+      min-width:100%;height:100%;
+      display:flex;align-items:center;padding:0 80px;
+      position:relative;overflow:hidden;
+    }
+    .slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.35;}
+    .slide-content{position:relative;z-index:2;max-width:500px;color:#fff;}
+    .slide-badge{
+      background:#2980b9;color:#fff;font-size:12px;font-weight:bold;
+      padding:4px 12px;border-radius:20px;display:inline-block;
+      margin-bottom:14px;letter-spacing:1px;text-transform:uppercase;
+    }
+    .slide-content h2{font-size:36px;line-height:1.2;margin-bottom:12px;}
+    .slide-content p{font-size:15px;color:#cde;margin-bottom:24px;line-height:1.6;}
+    .btn{
+      display:inline-block;padding:12px 28px;background:#2980b9;color:#fff;
+      text-decoration:none;border-radius:6px;font-weight:bold;font-size:14px;
+      transition:background .2s,transform .1s;
+    }
+    .btn:hover{background:#1a6fa3;transform:translateY(-1px);}
+    .btn-outline{background:transparent;border:2px solid #fff;margin-left:10px;}
+    .btn-outline:hover{background:#fff;color:#0f3460;}
+    .slider-btns{
+      position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+      display:flex;gap:10px;z-index:10;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:rgba(255,255,255,.4);cursor:pointer;
+      transition:background .3s;border:none;
+    }
+    .dot.active{background:#fff;}
+    .arrow{
+      position:absolute;top:50%;transform:translateY(-50%);
+      background:rgba(255,255,255,.2);border:none;color:#fff;
+      font-size:22px;padding:10px 16px;cursor:pointer;
+      z-index:10;border-radius:4px;transition:background .2s;
+    }
+    .arrow:hover{background:rgba(255,255,255,.4);}
+    .arrow-left{left:16px;}
+    .arrow-right{right:16px;}
+
+    .categorias{
+      display:flex;justify-content:center;gap:24px;
+      padding:50px 40px;flex-wrap:wrap;background:#f8fafc;
+    }
+    .cat-card{
+      background:#fff;border-radius:12px;padding:32px 28px;text-align:center;
+      box-shadow:0 4px 16px rgba(0,0,0,0.08);cursor:pointer;
+      transition:transform .2s,box-shadow .2s;
+      flex:1;min-width:200px;max-width:260px;
+      text-decoration:none;color:#333;
+    }
+    .cat-card:hover{transform:translateY(-6px);box-shadow:0 8px 24px rgba(41,128,185,.18);}
+    .cat-icon{font-size:48px;margin-bottom:14px;}
+    .cat-card h3{font-size:18px;color:#1a1a2e;margin-bottom:8px;}
+    .cat-card p{font-size:13px;color:#777;line-height:1.5;}
+
+    .sobre{
+      display:flex;gap:50px;align-items:center;
+      padding:70px 80px;flex-wrap:wrap;background:#fff;
+    }
+    .sobre-texto{flex:1;min-width:280px;}
+    .sobre-texto h2{font-size:30px;color:#1a1a2e;margin-bottom:18px;line-height:1.3;}
+    .sobre-texto p{font-size:15px;color:#555;line-height:1.8;margin-bottom:14px;}
+    .sobre-imagen{flex:1;min-width:280px;}
+    .img-placeholder{
+      width:100%;height:300px;
+      background:linear-gradient(135deg,#1a1a2e,#2980b9);
+      border-radius:12px;display:flex;align-items:center;
+      justify-content:center;color:#fff;font-size:16px;font-style:italic;
+    }
+
+    .valores{background:#0f3460;color:#fff;padding:60px 80px;text-align:center;}
+    .valores h2{font-size:28px;margin-bottom:40px;}
+    .valores-grid{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;}
+    .valor{
+      background:rgba(255,255,255,.1);border-radius:12px;
+      padding:30px 24px;flex:1;min-width:180px;max-width:220px;
+    }
+    .valor-icon{font-size:40px;margin-bottom:14px;}
+    .valor h3{font-size:20px;margin-bottom:8px;}
+    .valor p{font-size:13px;color:#a0c4e8;line-height:1.5;}
+
+    .sedes{padding:70px 80px;background:#f8fafc;}
+    .sedes h2{text-align:center;font-size:30px;color:#1a1a2e;margin-bottom:40px;}
+    .sedes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;}
+    .sede-card{
+      background:#fff;border-radius:10px;padding:24px;
+      box-shadow:0 3px 12px rgba(0,0,0,.07);border-top:4px solid #2980b9;
+    }
+    .sede-card h3{color:#1a1a2e;font-size:16px;margin-bottom:10px;}
+    .sede-card p{font-size:13px;color:#666;line-height:1.7;margin-bottom:12px;}
+    .sede-card .horario{
+      font-size:12px;color:#888;background:#f0f7ff;
+      padding:8px 10px;border-radius:6px;margin-bottom:12px;
+    }
+    .sede-card a{color:#2980b9;font-size:13px;text-decoration:none;font-weight:bold;}
+    .sede-card a:hover{text-decoration:underline;}
+
+    #contacto{padding:70px 80px;background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;}
+    #contacto h2{font-size:30px;text-align:center;margin-bottom:10px;}
+    #contacto .sub{text-align:center;color:#a0c4e8;margin-bottom:40px;font-size:15px;}
+    .contacto-grid{display:flex;gap:40px;flex-wrap:wrap;}
+    .contacto-info{flex:1;min-width:260px;}
+    .contacto-info h3{font-size:18px;margin-bottom:16px;color:#4fc3f7;}
+    .info-item{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start;}
+    .info-icon{font-size:20px;margin-top:2px;}
+    .info-item p{font-size:14px;color:#cde;line-height:1.5;}
+    .contacto-form{flex:1;min-width:280px;}
+    .form-group{margin-bottom:16px;}
+    .form-group label{display:block;font-size:13px;color:#a0c4e8;margin-bottom:6px;}
+    .form-group input,.form-group textarea,.form-group select{
+      width:100%;padding:11px 14px;background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.2);border-radius:6px;
+      color:#fff;font-size:14px;outline:none;transition:border .2s;
+    }
+    .form-group input:focus,.form-group textarea:focus{border-color:#4fc3f7;}
+    .form-group textarea{height:110px;resize:vertical;}
+    .btn-send{
+      width:100%;padding:13px;background:#2980b9;color:#fff;
+      border:none;border-radius:6px;font-size:15px;font-weight:bold;
+      cursor:pointer;transition:background .2s;
+    }
+    .btn-send:hover{background:#1a6fa3;}
+
+    .trabaja{background:#27ae60;color:#fff;text-align:center;padding:50px 40px;}
+    .trabaja h2{font-size:26px;margin-bottom:12px;}
+    .trabaja p{font-size:15px;margin-bottom:24px;color:#d5f5e3;}
+    .btn-white{
+      background:#fff;color:#27ae60;padding:12px 30px;
+      border-radius:6px;text-decoration:none;font-weight:bold;
+      font-size:15px;transition:transform .2s;display:inline-block;
+    }
+    .btn-white:hover{transform:scale(1.05);}
+
+    footer{
+      background:#1a1a2e;color:#ccc;padding:50px 80px 30px;
+      display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:30px;
+    }
+    footer h4{color:#4fc3f7;margin-bottom:14px;font-size:15px;}
+    footer ul{list-style:none;}
+    footer ul li{margin-bottom:9px;}
+    footer ul li a{color:#aaa;text-decoration:none;font-size:13px;transition:color .2s;}
+    footer ul li a:hover{color:#4fc3f7;}
+    .footer-social{display:flex;gap:12px;margin-top:10px;}
+    .social-btn{
+      background:rgba(255,255,255,.1);color:#fff;padding:8px 14px;
+      border-radius:6px;text-decoration:none;font-size:13px;transition:background .2s;
+    }
+    .social-btn:hover{background:#2980b9;}
+    .footer-bottom{background:#111;color:#777;text-align:center;padding:16px;font-size:12px;}
+
+    /* WHATSAPP */
+    .whatsapp-widget{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'Segoe UI',Arial,sans-serif;}
+    .wa-popup{
+      display:none;background:#fff;border-radius:16px;
+      box-shadow:0 8px 32px rgba(0,0,0,.22);width:300px;
+      overflow:hidden;margin-bottom:14px;animation:fadeUp .3s ease;
+    }
+    .wa-popup.open{display:block;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    .wa-header{
+      background:#25d366;padding:16px 18px;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .wa-header-left{display:flex;align-items:center;gap:10px;}
+    .wa-logo-icon{
+      width:36px;height:36px;background:#fff;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;font-size:22px;
+    }
+    .wa-header h4{color:#fff;font-size:16px;margin:0;font-weight:700;}
+    .wa-close{
+      background:rgba(0,0,0,.15);border:none;color:#fff;border-radius:50%;
+      width:28px;height:28px;cursor:pointer;font-size:16px;
+      display:flex;align-items:center;justify-content:center;transition:background .2s;
+    }
+    .wa-close:hover{background:rgba(0,0,0,.3);}
+    .wa-body{padding:18px 16px 14px;}
+    .wa-bubble{
+      background:#f0f0f0;border-radius:12px 12px 12px 0;
+      padding:14px 16px;font-size:15px;color:#333;
+      line-height:1.5;box-shadow:0 1px 4px rgba(0,0,0,.08);
+    }
+    .wa-btn-chat{
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      background:#25d366;color:#fff;margin:14px 16px 16px;
+      padding:13px;border-radius:30px;text-decoration:none;
+      font-weight:700;font-size:15px;transition:background .2s,transform .1s;
+      box-shadow:0 3px 10px rgba(37,211,102,.4);
+    }
+    .wa-btn-chat:hover{background:#1ebe5d;transform:scale(1.02);}
+    .wa-btn-chat svg{width:22px;height:22px;fill:#fff;}
+    .wa-float{
+      width:60px;height:60px;border-radius:50%;background:#25d366;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;border:none;
+      box-shadow:0 4px 16px rgba(37,211,102,.5);
+      transition:transform .2s,box-shadow .2s;margin-left:auto;
+    }
+    .wa-float:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(37,211,102,.6);}
+    .wa-float svg{width:34px;height:34px;fill:#fff;}
+
+    .scroll-top{
+      position:fixed;bottom:90px;right:24px;background:#2980b9;color:#fff;
+      border:none;border-radius:50%;width:42px;height:42px;
+      font-size:18px;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.2);
+      display:none;z-index:999;
+    }
+
+    @media(max-width:768px){
+      nav{padding:12px 20px;}
+      .slide{padding:0 30px;}
+      .slide-content h2{font-size:24px;}
+      .sobre,.sedes,#contacto{padding:40px 20px;}
+      footer{padding:40px 20px 20px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a href="https://www.facebook.com/share/1Bqn4H83gc/" target="_blank" title="Facebook" style="display:flex;align-items:center;gap:6px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#4267B2"><path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.891h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/></svg>
+    Facebook
+  </a>
+  <a href="https://www.instagram.com/brhn_ea?igsh=MWdlbmJ0dGtsZzh3MQ==" target="_blank" title="Instagram" style="display:flex;align-items:center;gap:6px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="url(#igGrad)">
+      <defs>
+        <linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#f09433"/>
+          <stop offset="25%" style="stop-color:#e6683c"/>
+          <stop offset="50%" style="stop-color:#dc2743"/>
+          <stop offset="75%" style="stop-color:#cc2366"/>
+          <stop offset="100%" style="stop-color:#bc1888"/>
+        </linearGradient>
+      </defs>
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.336 3.608 1.311.975.975 1.249 2.242 1.311 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.336 2.633-1.311 3.608-.975.975-2.242 1.249-3.608 1.311-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.336-3.608-1.311-.975-.975-1.249-2.242-1.311-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.336-2.633 1.311-3.608.975-.975 2.242-1.249 3.608-1.311C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.053.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.856.601 3.698 1.942 5.039 1.341 1.341 3.183 1.857 5.039 1.942C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.856-.085 3.698-.601 5.039-1.942 1.341-1.341 1.857-3.183 1.942-5.039.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.085-1.856-.601-3.698-1.942-5.039C20.646.673 18.804.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+    </svg>
+    Instagram
+  </a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Espiza Acero<span> | <span>Ingeniería & Arquitectura</span></div>
+  <ul class="nav-links">
+    <li>
+      <a href="#">Ventanas ▾</a>
+      <div class="dropdown">
+        <a href="#">Sistema Nova</a>
+        <a href="#">Estructura Convencional</a>
+        <a href="#">Serie 25</a>
+        <a href="#">Serie 62</a>
+      </div>
+    </li>
+    <li>
+      <a href="#">Mamparas ▾</a>
+      <div class="dropdown">
+        <a href="#">Sistema Nova</a>
+        <a href="#">Estructura Convencional</a>
+        <a href="#">Serie 25</a>
+        <a href="#">Serie 62</a>
+        <a href="#">Serie 80</a>
+      </div>
+    </li>
+    <li>
+      <a href="#">Puertas ▾</a>
+      <div class="dropdown">
+        <a href="#">Puerta Convencional</a>
+        <a href="#">Puerta con Diseño</a>
+        <a href="#">Puerta Serie 35</a>
+      </div>
+    </li>
+    <li>
+      <a href="#">Vidrios de Seguridad ▾</a>
+      <div class="dropdown">
+        <a href="#">Vidrios Templados</a>
+        <a href="#">Vidrios Laminados</a>
+        <a href="#">Espejos</a>
+      </div>
+    </li>
+    <li>
+      <a href="#">Accesorios ▾</a>
+      <div class="dropdown">
+        <a href="#">Policarbonato</a>
+        <a href="#">Polietileno Acrílico</a>
+        <a href="#">Panel de Aluminio</a>
+        <a href="#">Blocks de Vidrio</a>
+        <a href="#">Baldosas</a>
+      </div>
+    </li>
+    <li><a href="#">Proyectos</a></li>
+    <li><a href="#contacto" class="active">Contáctanos</a></li>
+  </ul>
+</nav>
+
+<!-- SLIDER -->
+<div class="slider">
+  <button class="arrow arrow-left" onclick="cambiarSlide(-1)">&#8249;</button>
+  <button class="arrow arrow-right" onclick="cambiarSlide(1)">&#8250;</button>
+  <div class="slides" id="slides">
+    <div class="slide">
+      <div class="slide-bg" style="background:linear-gradient(135deg,#0f3460,#1a237e);"></div>
+      <div class="slide-content">
+        <span class="slide-badge">Serie VL42</span>
+        <h2>Ventana Corrediza Serie VL 42</h2>
+        <p>Incluye guía superior e inferior, burlete U, garrucha de Nylon, seguro Fermax y más accesorios de calidad.</p>
+        <a href="#contacto" class="btn">Pídelo aquí</a>
+        <a href="#" class="btn btn-outline">Ver más</a>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background:linear-gradient(135deg,#1b5e20,#0f3460);"></div>
+      <div class="slide-content">
+        <span class="slide-badge">Nuevo Stock</span>
+        <h2>Siliconas Finotech</h2>
+        <p>FT 228 / FT 1000 / FT 225. Las mejores siliconas del mercado para tus proyectos de vidriería.</p>
+        <a href="#contacto" class="btn">Pídelo aquí</a>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background:linear-gradient(135deg,#4a148c,#0f3460);"></div>
+      <div class="slide-content">
+        <span class="slide-badge">Accesorios</span>
+        <h2>Frenos de Alta Calidad</h2>
+        <p>Frenos Sevax TSA 90° / Sevax Minos+ 90° / Kin Long. Calidad y durabilidad garantizadas.</p>
+        <a href="#contacto" class="btn">Pídelo aquí</a>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background:linear-gradient(135deg,#b71c1c,#0f3460);"></div>
+      <div class="slide-content">
+        <span class="slide-badge">Automatización</span>
+        <h2>Puertas Automáticas</h2>
+        <p>Soluciones modernas y adaptables al sistema contra incendios para tu edificio.</p>
+        <a href="#contacto" class="btn">Pídelo aquí</a>
+      </div>
+    </div>
+  </div>
+  <div class="slider-btns">
+    <button class="dot active" onclick="irSlide(0)"></button>
+    <button class="dot" onclick="irSlide(1)"></button>
+    <button class="dot" onclick="irSlide(2)"></button>
+    <button class="dot" onclick="irSlide(3)"></button>
+  </div>
+</div>
+
+<!-- CATEGORÍAS -->
+<div class="categorias">
+  <a href="#" class="cat-card">
+    <div class="cat-icon">🪟</div>
+    <h3>Vidrios de Seguridad</h3>
+    <p>Cristales templados, laminados y espejos de alta calidad</p>
+  </a>
+  <a href="#" class="cat-card">
+    <div class="cat-icon">🏗️</div>
+    <h3>Aluminios</h3>
+    <p>Perfiles y sistemas de aluminio para construcción</p>
+  </a>
+  <a href="#" class="cat-card">
+    <div class="cat-icon">🔧</div>
+    <h3>Accesorios / Otros</h3>
+    <p>Policarbonato, acrílico, panel de aluminio y más</p>
+  </a>
+</div>
+
+<!-- SOBRE NOSOTROS -->
+<section class="sobre">
+  <div class="sobre-texto">
+    <h2>Seguridad, Garantía y Rapidez al alcance de tu mano</h2>
+    <p><strong>Espiza Acero | Ingeniería & Arquitectura es una empresa Peruana</strong>, líder en la industria del Vidrio para el sector construcción a nivel nacional.</p>
+    <p>Comercializamos y distribuimos Vidrios y Aluminios a todo el Perú, brindando <strong>Calidad</strong> en nuestros productos y <strong>Eficiencia</strong> en nuestros servicios.</p>
+    <p>Nuestro compromiso es acompañar a nuestros clientes de forma integral, antes, durante y después de su compra, ofreciéndoles soluciones arquitectónicas para todos sus proyectos.</p>
+    <a href="#contacto" class="btn" style="margin-top:10px;">Comunícate con nosotros</a>
+  </div>
+  <div class="sobre-imagen">
+    <div class="img-placeholder">📷 Espiza Acero | Ingeniería & Arquitectura</div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<div class="valores">
+  <h2>Además de la mejor calidad, te ofrecemos:</h2>
+  <div class="valores-grid">
+    <div class="valor"><div class="valor-icon">🛡️</div><h3>Seguridad</h3><p>Productos certificados bajo las más exigentes normas internacionales.</p></div>
+    <div class="valor"><div class="valor-icon">✅</div><h3>Garantía</h3><p>Respaldamos cada producto con garantía y soporte post-venta permanente.</p></div>
+    <div class="valor"><div class="valor-icon">⚡</div><h3>Rapidez</h3><p>Tiempos de entrega optimizados para cumplir con tu cronograma de obra.</p></div>
+    <div class="valor"><div class="valor-icon">🏆</div><h3>Calidad</h3><p>Procesos y productos de la más alta calidad del mercado.</p></div>
+  </div>
+</div>
+
+<!-- SEDES -->
+<div class="sedes" id="sedes">
+  <h2>📍 Visítanos </h2>
+  <div class="sedes-grid">
+    <div class="sede-card">
+      <h3>🏢 Paucará </h3>
+      <p>Calle Real s/n.<br>Paucará – Huancavelica</p>
+      <div class="horario">📞 943 173 903<br>Lun–Vie: 8:30am – 5:00pm<br>Sábado: 8:30am – 1:00pm</div>
+      <a href="https://maps.app.goo.gl/d59jFbLALrHDr6kv5" target="_blank">📍 ¿Cómo llegar?</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- CONTACTO -->
+<div id="contacto">
+  <h2>Comunícate con nosotros</h2>
+  <p class="sub">Tenemos a tu disposición un gran equipo profesional que atenderá todas tus consultas.</p>
+  <div class="contacto-grid">
+    <div class="contacto-info">
+      <h3>📬 Información de Contacto</h3>
+      <div class="info-item"><span class="info-icon">📞</span><p>943 173 903</p></div>
+      <div class="info-item"><span class="info-icon">📍</span><p>Calle Real s/n <br>Paucará, Hvca, Perú</p></div>
+      <div class="info-item"><span class="info-icon">🕐</span><p>Lunes a Viernes: 8:30am – 5:00pm<br>Sábado: 8:30am – 1:00pm</p></div>
+<div class="info-item">
+  <span class="info-icon">
+    <i class="fab fa-facebook" style="color:#1877f2; font-size:20px; vertical-align:middle; margin-right:5px;"></i>
+  </span>
+  <p>
+    <a href="https://www.facebook.com/share/1Bqn4H83gc/" style="color:#4fc3f7;" target="_blank">
+      Facebook: Espiza Acero | Ingeniería & Arquitectura
+    </a>
+  </p>
+</div>
+<div class="info-item">
+  <span class="info-icon">
+    <i class="fab fa-instagram" style="color:#E4405F; font-size:20px; vertical-align:middle; margin-right:5px;"></i>
+  </span>
+  <p>
+    <a href="https://www.instagram.com/brhn_ea?igsh=MWdlbmJ0dGtsZzh3MQ==" style="color:#4fc3f7;" target="_blank">
+      Instagram: Espiza Acero | Ingeniería & Arquitectura
+    </a>
+  </p>
+</div>
+    </div>
+    <div class="contacto-form">
+      <h3>✉️ Envíanos un mensaje</h3><br>
+      <div class="form-group"><label>Nombre completo *</label><input type="text" placeholder="Tu nombre y apellido"></div>
+      <div class="form-group"><label>Correo electrónico *</label><input type="email" placeholder="tu@correo.com"></div>
+      <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+51 9XX XXX XXX"></div>
+      
+      <div class="form-group"><label>Mensaje *</label><textarea placeholder="Escribe tu consulta aquí..."></textarea></div>
+      <button class="btn-send" onclick="enviarFormulario()">📨 Enviar mensaje</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <h4>Espiza Acero | Ingeniería & Arquitectura</h4>
+<p style="font-size:13px;color:#888;line-height:1.6;">
+  Transformamos espacios con ingeniería y arquitectura.
+</p>
+
+<div class="footer-social" style="margin-top:16px; display:flex; gap:12px;">
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/share/1Bqn4H83gc/" target="_blank" title="Facebook" style="display:flex;align-items:center;gap:6px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#4267B2">
+      <path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.891h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/>
+    </svg>
+    Facebook
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/brhn_ea?igsh=MWdlbmJ0dGtsZzh3MQ==" target="_blank" title="Instagram" style="display:flex;align-items:center;gap:6px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="url(#igGrad)">
+      <defs>
+        <linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#f09433"/>
+          <stop offset="25%" style="stop-color:#e6683c"/>
+          <stop offset="50%" style="stop-color:#dc2743"/>
+          <stop offset="75%" style="stop-color:#cc2366"/>
+          <stop offset="100%" style="stop-color:#bc1888"/>
+        </linearGradient>
+      </defs>
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.336 3.608 1.311.975.975 1.249 2.242 1.311 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.336 2.633-1.311 3.608-.975.975-2.242 1.249-3.608 1.311-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.336-3.608-1.311-.975-.975-1.249-2.242-1.311-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.336-2.633 1.311-3.608.975-.975 2.242-1.249 3.608-1.311C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.053.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.856.601 3.698 1.942 5.039 1.341 1.341 3.183 1.857 5.039 1.942C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.856-.085 3.698-.601 5.039-1.942 1.341-1.341 1.857-3.183 1.942-5.039.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.085-1.856-.601-3.698-1.942-5.039C20.646.673 18.804.157 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+    </svg>
+    Instagram
+  </a>
+</div>
+
+  </div>
+  <div>
+    <h4>Nosotros</h4>
+    <ul>
+      <li><a href="#">Misión y Visión</a></li>
+      <li><a href="#">Proyectos</a></li>
+      <li><a href="#">Política de Privacidad</a></li>
+      <li><a href="#">Términos y Condiciones</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Productos</h4>
+    <ul>
+      <li><a href="#">Ventanas</a></li>
+      <li><a href="#">Mamparas</a></li>
+      <li><a href="#">Puertas</a></li>
+      <li><a href="#">Vidrios de Seguridad</a></li>
+      <li><a href="#">Accesorios</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Contacto</h4>
+    <ul>
+      <li><a href="#">📞 943 173 903</a></li>
+      <li><a href="#contacto">✉️ Formulario de contacto</a></li>
+<li>
+  <a href="https://wa.me/51943173903" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+         alt="WhatsApp" width="18" height="18" style="vertical-align:middle; margin-right:5px;">
+    WhatsApp
+  </a>
+</li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">Espiza Acero | Ingeniería & Arquitectura 2024 – Todos los derechos reservados.</div>
+
+<!-- WHATSAPP -->
+<div class="whatsapp-widget">
+  <div class="wa-popup" id="waPopup">
+    <div class="wa-header">
+      <div class="wa-header-left">
+        <div class="wa-logo-icon">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px;fill:#25d366;">
+            <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.76.72 5.44 2.08 7.8L.5 31.5l7.9-2.06A15.44 15.44 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm0 28.2a13.6 13.6 0 01-6.9-1.88l-.5-.3-5.1 1.34 1.36-4.96-.32-.52A13.6 13.6 0 012.3 16C2.3 8.44 8.44 2.3 16 2.3S29.7 8.44 29.7 16 23.56 28.7 16 28.7zm7.44-9.8c-.4-.2-2.38-1.18-2.76-1.3-.36-.14-.62-.2-.88.2-.26.4-1.02 1.3-1.26 1.56-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.12-.1-2.28-2.3-2.28-2.3-.3-.36-.06-.82.22-1.08l.68-.8c.2-.22.26-.4.4-.68.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.66-.88-.68h-.74c-.26 0-.68.1-1.04.5-.36.38-1.36 1.32-1.36 3.22s1.4 3.74 1.58 3.98c.2.26 2.74 4.18 6.64 5.86.92.4 1.64.64 2.2.82.92.3 1.76.26 2.42.16.74-.12 2.28-.94 2.6-1.84.32-.9.32-1.68.22-1.84-.1-.18-.36-.28-.76-.48z"/>
+          </svg>
+        </div>
+        <h4>WhatsApp</h4>
+      </div>
+      <button class="wa-close" onclick="toggleWA()">✕</button>
+    </div>
+    <div class="wa-body">
+      <div class="wa-bubble">Hola, ¿quieres preguntar por alguno de nuestros productos?</div>
+    </div>
+    <a href="https://wa.me/51943173903?text=Hola,%20quiero%20consultar%20sobre%20sus%20productos" class="wa-btn-chat" target="_blank">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 .5C7.44.5.5 7.44.5 16c0 2.76.72 5.44 2.08 7.8L.5 31.5l7.9-2.06A15.44 15.44 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm0 28.2a13.6 13.6 0 01-6.9-1.88l-.5-.3-5.1 1.34 1.36-4.96-.32-.52A13.6 13.6 0 012.3 16C2.3 8.44 8.44 2.3 16 2.3S29.7 8.44 29.7 16 23.56 28.7 16 28.7zm7.44-9.8c-.4-.2-2.38-1.18-2.76-1.3-.36-.14-.62-.2-.88.2-.26.4-1.02 1.3-1.26 1.56-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.12-.1-2.28-2.3-2.28-2.3-.3-.36-.06-.82.22-1.08l.68-.8c.2-.22.26-.4.4-.68.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.66-.88-.68h-.74c-.26 0-.68.1-1.04.5-.36.38-1.36 1.32-1.36 3.22s1.4 3.74 1.58 3.98c.2.26 2.74 4.18 6.64 5.86.92.4 1.64.64 2.2.82.92.3 1.76.26 2.42.16.74-.12 2.28-.94 2.6-1.84.32-.9.32-1.68.22-1.84-.1-.18-.36-.28-.76-.48z"/></svg>
+      Abrir chat
+    </a>
+  </div>
+  <button class="wa-float" onclick="toggleWA()" title="WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 .5C7.44.5.5 7.44.5 16c0 2.76.72 5.44 2.08 7.8L.5 31.5l7.9-2.06A15.44 15.44 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm0 28.2a13.6 13.6 0 01-6.9-1.88l-.5-.3-5.1 1.34 1.36-4.96-.32-.52A13.6 13.6 0 012.3 16C2.3 8.44 8.44 2.3 16 2.3S29.7 8.44 29.7 16 23.56 28.7 16 28.7zm7.44-9.8c-.4-.2-2.38-1.18-2.76-1.3-.36-.14-.62-.2-.88.2-.26.4-1.02 1.3-1.26 1.56-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.12-.1-2.28-2.3-2.28-2.3-.3-.36-.06-.82.22-1.08l.68-.8c.2-.22.26-.4.4-.68.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.66-.88-.68h-.74c-.26 0-.68.1-1.04.5-.36.38-1.36 1.32-1.36 3.22s1.4 3.74 1.58 3.98c.2.26 2.74 4.18 6.64 5.86.92.4 1.64.64 2.2.82.92.3 1.76.26 2.42.16.74-.12 2.28-.94 2.6-1.84.32-.9.32-1.68.22-1.84-.1-.18-.36-.28-.76-.48z"/></svg>
+  </button>
+</div>
+
+<script>
+  let actual=0;
+  const slides=document.getElementById('slides');
+  const dots=document.querySelectorAll('.dot');
+  const total=4;
+  function irSlide(n){actual=n;slides.style.transform=`translateX(-${actual*100}%)`;dots.forEach((d,i)=>d.classList.toggle('active',i===actual));}
+  function cambiarSlide(dir){actual=(actual+dir+total)%total;irSlide(actual);}
+  setInterval(()=>cambiarSlide(1),5000);
+  window.addEventListener('scroll',()=>{document.getElementById('scrollTop').style.display=window.scrollY>300?'block':'none';});
+  function toggleWA(){document.getElementById('waPopup').classList.toggle('open');}
+  setTimeout(()=>document.getElementById('waPopup').classList.add('open'),3000);
+  function enviarFormulario(){alert('✅ Mensaje enviado correctamente.\n\nNos comunicaremos contigo a la brevedad.\n\n¡Espiza Acero | Ingeniería & Arquitectura!');}
+</script>
+</body>
+</html>
