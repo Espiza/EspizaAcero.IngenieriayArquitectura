@@ -1,0 +1,24 @@
+{
+  "titulo": "Ventana Sistema Nova",
+  "emoji": "🪟",
+  "frase": "Conectando tu hogar con la mejor luz natural",
+  "tema": "azul",
+  "mensaje_whatsapp": "Hola, me interesa la Ventana Sistema Nova",
+  "fotos": [
+    {
+      "foto": "img/ventanas/ventananova-1.jpg",
+      "nombre": "Modelo 1",
+      "descripcion": "Ventana Sistema Nova"
+    },
+    {
+      "foto": "img/ventanas/ventananova-2.jpg",
+      "nombre": "Modelo 2",
+      "descripcion": "Ventana Sistema Nova"
+    },
+    {
+      "foto": "img/ventanas/ventananova-3.jpg",
+      "nombre": "Modelo 3",
+      "descripcion": "Ventana Sistema Nova"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "titulo": "Puerta de Ducha Convencional",
+  "emoji": "🚿",
+  "frase": "Elegancia y funcionalidad para tu baño",
+  "tema": "azul",
+  "mensaje_whatsapp": "Hola, me interesa la Puerta de Ducha Convencional",
+  "fotos": [
+    {
+      "foto": "img/ducha/convencional-1.jpg",
+      "nombre": "Doble Corredizo",
+      "descripcion": "Puerta de Ducha Convencional"
+    },
+    {
+      "foto": "img/ducha/convencional-2.jpg",
+      "nombre": "Modelo TEC Fija/Corredizo",
+      "descripcion": "Puerta de Ducha Convencional"
+    },
+    {
+      "foto": "img/ducha/convencional-3.jpg",
+      "nombre": "Modelo TEC \"L\"",
+      "descripcion": "Puerta de Ducha Convencional"
+    }
+  ]
+}

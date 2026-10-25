@@ -1,0 +1,24 @@
+{
+  "titulo": "Mampara Serie 80",
+  "emoji": "🪟",
+  "frase": "Amplitud y estilo para tu hogar",
+  "tema": "azul",
+  "mensaje_whatsapp": "Hola, me interesa la Mampara Serie 80",
+  "fotos": [
+    {
+      "foto": "img/mamparas/Mamparaserie80-1.jpg",
+      "nombre": "Modelo 1",
+      "descripcion": "Mampara Serie 80"
+    },
+    {
+      "foto": "img/mamparas/Mamparaserie80-2.jpg",
+      "nombre": "Modelo 2",
+      "descripcion": "Mampara Serie 80"
+    },
+    {
+      "foto": "img/mamparas/Mamparaserie80-3.jpg",
+      "nombre": "Modelo 3",
+      "descripcion": "Mampara Serie 80"
+    }
+  ]
+}

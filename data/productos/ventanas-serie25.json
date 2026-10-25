@@ -1,0 +1,24 @@
+{
+  "titulo": "Ventana Serie 25",
+  "emoji": "🪟",
+  "frase": "Conectando tu hogar con la mejor luz natural",
+  "tema": "azul",
+  "mensaje_whatsapp": "Hola, me interesa la Ventana Serie 25",
+  "fotos": [
+    {
+      "foto": "img/ventanas/ventanaserie25-1.jpg",
+      "nombre": "Modelo 1",
+      "descripcion": "Ventana Serie 25"
+    },
+    {
+      "foto": "img/ventanas/ventanaserie25-2.jpg",
+      "nombre": "Modelo 2",
+      "descripcion": "Ventana Serie 25"
+    },
+    {
+      "foto": "img/ventanas/ventanaserie25-3.jpg",
+      "nombre": "Modelo 3",
+      "descripcion": "Ventana Serie 25"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: espiza/EspizaAcero.IngenieriayArquitectura
+  branch: main
+  base_url: https://squeezer.now.sh # Servidor gratuito para gestionar la autenticación de GitHub
+
+media_folder: "img"
+public_folder: "img"
+
+collections:
+  - name: "configuracion"
+    label: "Configuración del Sitio"
+    files:
+      - file: "data/sitio.json"
+        label: "Datos Generales"
+        name: "sitio"
+        fields:
+          - { label: "Teléfono", name: "telefono", widget: "string" }
+          - { label: "Dirección", name: "direccion", widget: "string" }
+
+  - name: "paginas"
+    label: "Páginas Principales"
+    files:
+      - file: "data/inicio.json"
+        label: "Página de Inicio"
+        name: "inicio"
+        fields:
+          - { label: "Título Principal", name: "titulo", widget: "string" }
+          - { label: "Foto de Empresa (Sobre nosotros)", name: "foto_nosotros", widget: "image" }

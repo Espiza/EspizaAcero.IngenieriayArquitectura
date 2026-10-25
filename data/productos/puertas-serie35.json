@@ -1,0 +1,24 @@
+{
+  "titulo": "Puerta Serie 35",
+  "emoji": "🚪",
+  "frase": "Detalles que transforman tu entrada",
+  "tema": "azul",
+  "mensaje_whatsapp": "Hola, me interesa la Puerta Serie 35",
+  "fotos": [
+    {
+      "foto": "img/puertas/serie35-1.jpg",
+      "nombre": "Modelo 1",
+      "descripcion": "Puerta Serie 35"
+    },
+    {
+      "foto": "img/puertas/serie35-2.jpg",
+      "nombre": "Modelo 2",
+      "descripcion": "Puerta Serie 35"
+    },
+    {
+      "foto": "img/puertas/serie35-3.jpg",
+      "nombre": "Modelo 3",
+      "descripcion": "Puerta Serie 35"
+    }
+  ]
+}

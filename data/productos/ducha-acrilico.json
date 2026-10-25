@@ -1,0 +1,24 @@
+{
+  "titulo": "Puerta de Ducha con Acrílico",
+  "emoji": "🚿",
+  "frase": "Elegancia y funcionalidad para tu baño",
+  "tema": "azul",
+  "mensaje_whatsapp": "Hola, me interesa la Puerta de Ducha con Acrilico",
+  "fotos": [
+    {
+      "foto": "img/ducha/acrilico-1.jpg",
+      "nombre": "Fija/Corrediza",
+      "descripcion": "Puerta de ducha con acrílico"
+    },
+    {
+      "foto": "img/ducha/acrilico-2.jpg",
+      "nombre": "Doble Corrediza",
+      "descripcion": "Puerta de ducha con acrílico"
+    },
+    {
+      "foto": "img/ducha/acrilico-3.jpg",
+      "nombre": "Modelo \"L\"",
+      "descripcion": "Puerta de ducha con acrílico"
+    }
+  ]
+}

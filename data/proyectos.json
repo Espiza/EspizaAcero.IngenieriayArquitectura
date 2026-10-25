@@ -1,0 +1,14 @@
+{
+  "titulo": "Nuestros Proyectos",
+  "emoji": "🏗️",
+  "frase": "Conoce los trabajos realizados por Espiza Acero | Ingeniería & Arquitectura",
+  "mensaje_whatsapp": "Hola, quiero consultar sobre un proyecto",
+  "proyectos": [
+    { "foto": "img/proyectos/proyecto-1.jpg", "nombre": "Proyecto 1", "descripcion": "Descripción del proyecto realizado", "etiqueta": "Ventanas" },
+    { "foto": "img/proyectos/proyecto-2.jpg", "nombre": "Proyecto 2", "descripcion": "Descripción del proyecto realizado", "etiqueta": "Mamparas" },
+    { "foto": "img/proyectos/proyecto-3.jpg", "nombre": "Proyecto 3", "descripcion": "Descripción del proyecto realizado", "etiqueta": "Puertas" },
+    { "foto": "img/proyectos/proyecto-4.jpg", "nombre": "Proyecto 4", "descripcion": "Descripción del proyecto realizado", "etiqueta": "Puerta de Ducha" },
+    { "foto": "img/proyectos/proyecto-5.jpg", "nombre": "Proyecto 5", "descripcion": "Descripción del proyecto realizado", "etiqueta": "Melamina" },
+    { "foto": "img/proyectos/proyecto-6.jpg", "nombre": "Proyecto 6", "descripcion": "Descripción del proyecto realizado", "etiqueta": "Proyecto" }
+  ]
+}

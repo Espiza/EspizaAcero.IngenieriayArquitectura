@@ -1,0 +1,24 @@
+{
+  "titulo": "Puerta Convencional",
+  "emoji": "🚪",
+  "frase": "Detalles que transforman tu entrada",
+  "tema": "azul",
+  "mensaje_whatsapp": "Hola, me interesa la Puerta Convencional",
+  "fotos": [
+    {
+      "foto": "img/puertas/convencional-1.jpg",
+      "nombre": "Modelo 1",
+      "descripcion": "Puerta Convencional"
+    },
+    {
+      "foto": "img/puertas/convencional-2.jpg",
+      "nombre": "Modelo 2",
+      "descripcion": "Puerta Convencional"
+    },
+    {
+      "foto": "img/puertas/convencional-3.jpg",
+      "nombre": "Modelo 3",
+      "descripcion": "Puerta Convencional"
+    }
+  ]
+}
