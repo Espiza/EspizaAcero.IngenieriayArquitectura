@@ -1,18 +1,365 @@
+# ─────────────────────────────────────────────
+#  Panel de edición (Decap CMS) — Espiza Acero
+#  Reemplaza el contenido de admin/config.yml con este archivo.
+# ─────────────────────────────────────────────
 backend:
   name: github
   repo: Espiza/EspizaAcero.IngenieriayArquitectura
   branch: main
-  auth_type: implicit
-
-media_folder: "images"
-public_folder: "/images"
-
+locale: es
+media_folder: img
+public_folder: /img
 collections:
-  - name: "paginas"
-    label: "Páginas"
-    files:
-      - file: "index.html"
-        label: "Página Principal"
-        name: "index"
+- name: sitio
+  label: Contenido de la web
+  files:
+  - name: datos
+    label: Datos de la empresa
+    file: data/sitio.json
+    fields:
+    - label: Nombre de la empresa
+      name: nombre
+      widget: string
+      required: false
+    - label: Subtítulo (junto al nombre)
+      name: subtitulo
+      widget: string
+      required: false
+    - label: Logo (opcional, reemplaza el texto del encabezado)
+      name: logo
+      widget: image
+      required: false
+    - label: Teléfono (como se muestra)
+      name: telefono
+      widget: string
+      required: false
+    - label: 'WhatsApp (solo números con código de país. Ej: 51943173903)'
+      name: whatsapp
+      widget: string
+      required: false
+    - label: Enlace de Facebook
+      name: facebook
+      widget: string
+      required: false
+    - label: Enlace de Instagram
+      name: instagram
+      widget: string
+      required: false
+    - label: Dirección
+      name: direccion
+      widget: text
+      required: false
+    - label: Horario de atención
+      name: horario
+      widget: text
+      required: false
+    - label: Frase del pie de página
+      name: frase_footer
+      widget: string
+      required: false
+    - label: Texto de derechos reservados
+      name: copyright
+      widget: string
+      required: false
+    - label: Mensaje de la burbuja de WhatsApp
+      name: mensaje_burbuja_whatsapp
+      widget: string
+      required: false
+    - label: Mensaje que se envía al abrir el chat de WhatsApp
+      name: mensaje_inicial_whatsapp
+      widget: string
+      required: false
+  - name: menu
+    label: Menú de navegación
+    file: data/menu.json
+    fields:
+    - label: Grupos del menú
+      name: menus
+      widget: list
+      required: false
+      fields:
+      - label: Nombre del grupo (ej. Ventanas)
+        name: titulo
+        widget: string
+        required: true
+      - label: Páginas del grupo
+        name: items
+        widget: list
+        required: false
         fields:
-          - {label: "Título", name: "title", widget: "string"}
+        - label: Nombre que se ve en el menú
+          name: nombre
+          widget: string
+          required: true
+        - label: Código de la página (igual al nombre del archivo en Páginas de productos, sin .json)
+          name: pagina
+          widget: string
+          required: true
+        summary: '{{fields.nombre}}'
+        label_singular: página
+      summary: '{{fields.titulo}}'
+      label_singular: grupo
+  - name: inicio
+    label: Página de inicio
+    file: data/inicio.json
+    fields:
+    - label: Banners principales (slider)
+      name: slides
+      widget: list
+      required: false
+      fields:
+      - label: Foto de fondo
+        name: imagen
+        widget: image
+        required: false
+      - label: Color de fondo
+        name: tema
+        widget: select
+        required: true
+        default: azul
+        options:
+        - label: Azul
+          value: azul
+        - label: Verde
+          value: verde
+        - label: Morado
+          value: morado
+        - label: Rojo
+          value: rojo
+      - label: Etiqueta pequeña
+        name: etiqueta
+        widget: string
+        required: false
+      - label: Título
+        name: titulo
+        widget: string
+        required: true
+      - label: Texto
+        name: texto
+        widget: text
+        required: false
+      - label: Botón 1 (texto)
+        name: boton
+        widget: string
+        required: false
+      - label: Botón 1 (enlace)
+        name: boton_enlace
+        widget: string
+        required: false
+      - label: Botón 2 (texto, opcional)
+        name: boton2
+        widget: string
+        required: false
+      - label: Botón 2 (enlace)
+        name: boton2_enlace
+        widget: string
+        required: false
+      summary: '{{fields.titulo}}'
+      label_singular: banner
+    - label: Tarjetas de categorías
+      name: categorias
+      widget: list
+      required: false
+      fields:
+      - label: Emoji
+        name: emoji
+        widget: string
+        required: false
+      - label: Título
+        name: titulo
+        widget: string
+        required: true
+      - label: Descripción
+        name: texto
+        widget: string
+        required: false
+      - label: Enlace
+        name: enlace
+        widget: string
+        required: false
+      summary: '{{fields.titulo}}'
+      label_singular: tarjeta
+    - label: Sobre nosotros
+      name: sobre
+      widget: object
+      fields:
+      - label: Título
+        name: titulo
+        widget: string
+        required: true
+      - label: Párrafos (usa **así** para negrita)
+        name: parrafos
+        widget: list
+        required: false
+        field:
+          label: Párrafo
+          name: parrafo
+          widget: text
+      - label: Texto del botón
+        name: boton
+        widget: string
+        required: false
+      - label: Foto de la empresa
+        name: imagen
+        widget: image
+        required: false
+    - label: Título de la sección de valores
+      name: valores_titulo
+      widget: string
+      required: false
+    - label: Valores
+      name: valores
+      widget: list
+      required: false
+      fields:
+      - label: Emoji
+        name: emoji
+        widget: string
+        required: false
+      - label: Título
+        name: titulo
+        widget: string
+        required: true
+      - label: Texto
+        name: texto
+        widget: text
+        required: false
+      summary: '{{fields.titulo}}'
+      label_singular: valor
+    - label: Título de la sección de sedes
+      name: sedes_titulo
+      widget: string
+      required: false
+    - label: Sedes
+      name: sedes
+      widget: list
+      required: false
+      fields:
+      - label: Nombre de la sede
+        name: nombre
+        widget: string
+        required: true
+      - label: Foto del local
+        name: foto
+        widget: image
+        required: false
+      - label: Dirección
+        name: direccion
+        widget: text
+        required: false
+      - label: Teléfono y horario
+        name: detalle
+        widget: text
+        required: false
+      - label: Enlace de Google Maps
+        name: mapa
+        widget: string
+        required: false
+      summary: '{{fields.nombre}}'
+      label_singular: sede
+    - label: Título de contacto
+      name: contacto_titulo
+      widget: string
+      required: false
+    - label: Subtítulo de contacto
+      name: contacto_subtitulo
+      widget: text
+      required: false
+  - name: proyectos
+    label: Proyectos
+    file: data/proyectos.json
+    fields:
+    - label: Título de la página
+      name: titulo
+      widget: string
+      required: true
+    - label: Emoji
+      name: emoji
+      widget: string
+      required: false
+    - label: Frase bajo el título
+      name: frase
+      widget: string
+      required: false
+    - label: Mensaje de WhatsApp del botón
+      name: mensaje_whatsapp
+      widget: string
+      required: false
+    - label: Lista de proyectos
+      name: proyectos
+      widget: list
+      required: false
+      fields:
+      - label: Foto
+        name: foto
+        widget: image
+        required: false
+      - label: Nombre del proyecto
+        name: nombre
+        widget: string
+        required: true
+      - label: Descripción
+        name: descripcion
+        widget: text
+        required: false
+      - label: Categoría (etiqueta)
+        name: etiqueta
+        widget: string
+        required: false
+      summary: '{{fields.nombre}}'
+      label_singular: proyecto
+- name: productos
+  label: Páginas de productos
+  label_singular: página de producto
+  folder: data/productos
+  extension: json
+  format: json
+  create: true
+  slug: '{{slug}}'
+  summary: '{{titulo}}'
+  fields:
+  - label: Título de la página
+    name: titulo
+    widget: string
+    required: true
+  - label: Emoji
+    name: emoji
+    widget: string
+    required: false
+  - label: Frase bajo el título
+    name: frase
+    widget: string
+    required: false
+  - label: Color de la cabecera
+    name: tema
+    widget: select
+    required: true
+    default: azul
+    options:
+    - label: Azul
+      value: azul
+    - label: Verde
+      value: verde
+  - label: Mensaje de WhatsApp del botón
+    name: mensaje_whatsapp
+    widget: string
+    required: false
+  - label: Fotos de la galería
+    name: fotos
+    widget: list
+    required: false
+    fields:
+    - label: Foto
+      name: foto
+      widget: image
+      required: false
+    - label: Nombre del modelo
+      name: nombre
+      widget: string
+      required: true
+    - label: Descripción corta
+      name: descripcion
+      widget: string
+      required: false
+    summary: '{{fields.nombre}}'
+    label_singular: foto
