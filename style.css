@@ -643,9 +643,3 @@ footer ul li a:hover { color: #4fc3f7; }
   .slides { transition: none; }
   .galeria-item, .cat-card { transition: none; }
 }
-/* Eliminar flecha del widget de WhatsApp */
-.wa-bubble::before,
-.wa-bubble::after {
-  display: none !important;
-  content: none !important;
-}
