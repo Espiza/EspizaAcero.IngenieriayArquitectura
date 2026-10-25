@@ -1,0 +1,52 @@
+{
+  "slides": [
+    { "tema": "azul", "imagen": "img/hero-slide-1.jpg", "etiqueta": "Serie VL42",
+      "titulo": "Ventana Corrediza Serie VL 42",
+      "texto": "Incluye guía superior e inferior, burlete U, garrucha de Nylon, seguro Fermax y más accesorios de calidad.",
+      "boton": "Pídelo aquí", "boton_enlace": "#contacto",
+      "boton2": "Ver más", "boton2_enlace": "#" },
+    { "tema": "verde", "imagen": "img/hero-slide-2.jpg", "etiqueta": "Nuevo Stock",
+      "titulo": "Siliconas Finotech",
+      "texto": "FT 228 / FT 1000 / FT 225. Las mejores siliconas del mercado para tus proyectos de vidriería.",
+      "boton": "Pídelo aquí", "boton_enlace": "#contacto", "boton2": "", "boton2_enlace": "" },
+    { "tema": "morado", "imagen": "img/hero-slide-3.jpg", "etiqueta": "Accesorios",
+      "titulo": "Frenos de Alta Calidad",
+      "texto": "Frenos Sevax TSA 90° / Sevax Minos+ 90° / Kin Long. Calidad y durabilidad garantizadas.",
+      "boton": "Pídelo aquí", "boton_enlace": "#contacto", "boton2": "", "boton2_enlace": "" },
+    { "tema": "rojo", "imagen": "img/hero-slide-4.jpg", "etiqueta": "Automatización",
+      "titulo": "Puertas Automáticas",
+      "texto": "Soluciones modernas y adaptables al sistema contra incendios para tu edificio.",
+      "boton": "Pídelo aquí", "boton_enlace": "#contacto", "boton2": "", "boton2_enlace": "" }
+  ],
+  "categorias": [
+    { "emoji": "🪟", "titulo": "Vidrios de Seguridad", "texto": "Cristales templados, laminados y espejos de alta calidad", "enlace": "#" },
+    { "emoji": "🏗️", "titulo": "Aluminios", "texto": "Perfiles y sistemas de aluminio para construcción", "enlace": "#" },
+    { "emoji": "🔧", "titulo": "Accesorios / Otros", "texto": "Policarbonato, acrílico, panel de aluminio y más", "enlace": "#" }
+  ],
+  "sobre": {
+    "titulo": "Seguridad, Garantía y Rapidez al alcance de tu mano",
+    "parrafos": [
+      "**Espiza Acero | Ingeniería & Arquitectura es una empresa Peruana**, líder en la industria del Vidrio para el sector construcción a nivel nacional.",
+      "Comercializamos y distribuimos Vidrios y Aluminios a todo el Perú, brindando **Calidad** en nuestros productos y **Eficiencia** en nuestros servicios.",
+      "Nuestro compromiso es acompañar a nuestros clientes de forma integral, antes, durante y después de su compra."
+    ],
+    "boton": "Comunícate con nosotros",
+    "imagen": "img/nosotros.jpg"
+  },
+  "valores_titulo": "Además de la mejor calidad, te ofrecemos:",
+  "valores": [
+    { "emoji": "🛡️", "titulo": "Seguridad", "texto": "Productos certificados bajo las más exigentes normas internacionales." },
+    { "emoji": "✅", "titulo": "Garantía", "texto": "Respaldamos cada producto con garantía y soporte post-venta permanente." },
+    { "emoji": "⚡", "titulo": "Rapidez", "texto": "Tiempos de entrega optimizados para cumplir con tu cronograma de obra." },
+    { "emoji": "🏆", "titulo": "Calidad", "texto": "Procesos y productos de la más alta calidad del mercado." }
+  ],
+  "sedes_titulo": "📍 Visítanos",
+  "sedes": [
+    { "nombre": "🏢 Paucará", "foto": "img/sede.jpg",
+      "direccion": "Calle Real s/n.\nPaucará – Huancavelica",
+      "detalle": "📞 943 173 903\nLun–Vie: 8:30am – 5:00pm\nSábado: 8:30am – 1:00pm",
+      "mapa": "https://maps.app.goo.gl/d59jFbLALrHDr6kv5" }
+  ],
+  "contacto_titulo": "Comunícate con nosotros",
+  "contacto_subtitulo": "Tenemos a tu disposición un gran equipo profesional que atenderá todas tus consultas."
+}

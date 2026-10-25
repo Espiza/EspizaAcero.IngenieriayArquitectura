@@ -1,0 +1,32 @@
+{
+  "menus": [
+    { "titulo": "Ventanas", "items": [
+      { "nombre": "Sistema Nova", "pagina": "ventanas-sistema-nova" },
+      { "nombre": "Estructura Convencional", "pagina": "ventanas-convencional" },
+      { "nombre": "Serie 25", "pagina": "ventanas-serie25" },
+      { "nombre": "Serie 62", "pagina": "ventanas-serie62" }
+    ]},
+    { "titulo": "Mamparas", "items": [
+      { "nombre": "Sistema Nova", "pagina": "mamparas-sistema-nova" },
+      { "nombre": "Estructura Convencional", "pagina": "mamparas-convencional" },
+      { "nombre": "Serie 25", "pagina": "mamparas-serie25" },
+      { "nombre": "Serie 62", "pagina": "mamparas-serie62" },
+      { "nombre": "Serie 80", "pagina": "mamparas-serie80" }
+    ]},
+    { "titulo": "Puertas", "items": [
+      { "nombre": "Puerta Convencional", "pagina": "puertas-convencional" },
+      { "nombre": "Puerta con Diseño", "pagina": "puertas-diseno" },
+      { "nombre": "Puerta Serie 35", "pagina": "puertas-serie35" }
+    ]},
+    { "titulo": "Puertas de Ducha", "items": [
+      { "nombre": "Puerta de Ducha con Acrílico", "pagina": "ducha-acrilico" },
+      { "nombre": "Puerta de Ducha Convencional", "pagina": "ducha-convencional" },
+      { "nombre": "Puerta de Ducha Euro", "pagina": "ducha-euro" }
+    ]},
+    { "titulo": "Melamina", "items": [
+      { "nombre": "Mueble para Sala", "pagina": "melamina-sala" },
+      { "nombre": "Mueble de Cocina", "pagina": "melamina-cocina" },
+      { "nombre": "Closet", "pagina": "melamina-closet" }
+    ]}
+  ]
+}
