@@ -1,0 +1,24 @@
+{
+  "titulo": "Ventana Estructura Convencional",
+  "emoji": "🪟",
+  "frase": "Conectando tu hogar con la mejor luz natural",
+  "tema": "azul",
+  "mensaje_whatsapp": "Hola, me interesa la Ventana Estructura Convencional",
+  "fotos": [
+    {
+      "foto": "img/ventanas/ventanaconvencional-1.jpg",
+      "nombre": "Modelo 1",
+      "descripcion": "Ventana Estructura Convencional"
+    },
+    {
+      "foto": "img/ventanas/ventanaconvencional-2.jpg",
+      "nombre": "Modelo 2",
+      "descripcion": "Ventana Estructura Convencional"
+    },
+    {
+      "foto": "img/ventanas/ventanaconvencional-3.jpg",
+      "nombre": "Modelo 3",
+      "descripcion": "Ventana Estructura Convencional"
+    }
+  ]
+}

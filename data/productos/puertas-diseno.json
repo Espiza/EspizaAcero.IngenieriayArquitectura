@@ -1,0 +1,24 @@
+{
+  "titulo": "Puerta con Diseño",
+  "emoji": "🚪",
+  "frase": "Detalles que transforman tu entrada",
+  "tema": "azul",
+  "mensaje_whatsapp": "Hola, me interesa la Puerta con Diseño",
+  "fotos": [
+    {
+      "foto": "img/puertas/diseño-1.jpg",
+      "nombre": "Modelo 1",
+      "descripcion": "Puerta con Diseño"
+    },
+    {
+      "foto": "img/puertas/diseño-2.jpg",
+      "nombre": "Modelo 2",
+      "descripcion": "Puerta con Diseño"
+    },
+    {
+      "foto": "img/puertas/diseño-3.jpg",
+      "nombre": "Modelo 3",
+      "descripcion": "Puerta con Diseño"
+    }
+  ]
+}

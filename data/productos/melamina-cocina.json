@@ -1,0 +1,24 @@
+{
+  "titulo": "Mueble Para Cocina - Melamina",
+  "emoji": "🛋️",
+  "frase": "Diseños modernos y elegantes para tu hogar",
+  "tema": "verde",
+  "mensaje_whatsapp": "Hola, me interesa el Mueble Para Cocina",
+  "fotos": [
+    {
+      "foto": "img/melamina/cocina-1.jpg",
+      "nombre": "Modelo 1",
+      "descripcion": "Mueble Para Cocina"
+    },
+    {
+      "foto": "img/melamina/cocina-2.jpg",
+      "nombre": "Modelo 2",
+      "descripcion": "Mueble Para Cocina"
+    },
+    {
+      "foto": "img/melamina/cocina-3.jpg",
+      "nombre": "Modelo 3",
+      "descripcion": "Mueble Para Cocina"
+    }
+  ]
+}

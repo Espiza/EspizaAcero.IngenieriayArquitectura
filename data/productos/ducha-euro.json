@@ -1,0 +1,24 @@
+{
+  "titulo": "Puerta de Ducha Euro",
+  "emoji": "🚿",
+  "frase": "Elegancia y funcionalidad para tu baño",
+  "tema": "azul",
+  "mensaje_whatsapp": "Hola, me interesa la Puerta de Ducha Euro",
+  "fotos": [
+    {
+      "foto": "img/ducha/euro-1.jpg",
+      "nombre": "Euro Fijo/Corredizo",
+      "descripcion": "Puerta de Ducha Euro"
+    },
+    {
+      "foto": "img/ducha/euro-2.jpg",
+      "nombre": "Euro Fijo/Corredizo",
+      "descripcion": "Puerta de Ducha Euro"
+    },
+    {
+      "foto": "img/ducha/euro-3.jpg",
+      "nombre": "Euro en \"L\"",
+      "descripcion": "Puerta de Ducha Euro"
+    }
+  ]
+}

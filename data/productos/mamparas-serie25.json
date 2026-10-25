@@ -1,0 +1,24 @@
+{
+  "titulo": "Mampara Serie 25",
+  "emoji": "🪟",
+  "frase": "Amplitud y estilo para tu hogar",
+  "tema": "azul",
+  "mensaje_whatsapp": "Hola, me interesa la Mampara Serie 25",
+  "fotos": [
+    {
+      "foto": "img/mamparas/Mamparaserie25-1.jpg",
+      "nombre": "Modelo 1",
+      "descripcion": "Mampara Serie 25"
+    },
+    {
+      "foto": "img/mamparas/Mamparaserie25-2.jpg",
+      "nombre": "Modelo 2",
+      "descripcion": "Mampara Serie 25"
+    },
+    {
+      "foto": "img/mamparas/Mamparaserie25-3.jpg",
+      "nombre": "Modelo 3",
+      "descripcion": "Mampara Serie 25"
+    }
+  ]
+}

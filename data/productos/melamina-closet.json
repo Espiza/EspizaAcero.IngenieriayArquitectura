@@ -1,0 +1,24 @@
+{
+  "titulo": "Closet - Melamina",
+  "emoji": "🛋️",
+  "frase": "Diseños modernos y elegantes para tu hogar",
+  "tema": "verde",
+  "mensaje_whatsapp": "Hola, me interesa el Mueble Closet",
+  "fotos": [
+    {
+      "foto": "img/melamina/closet-1.jpg",
+      "nombre": "Modelo 1",
+      "descripcion": "Mueble Closet"
+    },
+    {
+      "foto": "img/melamina/closet-2.jpg",
+      "nombre": "Modelo 2",
+      "descripcion": "Mueble Closet"
+    },
+    {
+      "foto": "img/melamina/closet-3.jpg",
+      "nombre": "Modelo 3",
+      "descripcion": "Mueble Closet"
+    }
+  ]
+}
