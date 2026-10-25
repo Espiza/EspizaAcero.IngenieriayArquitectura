@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espiza Acero | Ingeniería & Arquitectura</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="topbar" id="topbar"></div>
+<nav id="nav"></nav>
+
+<!-- SLIDER -->
+<div class="slider">
+  <button class="arrow arrow-left" id="slidePrev" aria-label="Anterior">&#8249;</button>
+  <button class="arrow arrow-right" id="slideNext" aria-label="Siguiente">&#8250;</button>
+  <div class="slides" id="slides"></div>
+  <div class="slider-btns" id="slideDots"></div>
+</div>
+
+<!-- CATEGORÍAS -->
+<div class="categorias" id="categorias"></div>
+
+<!-- SOBRE NOSOTROS -->
+<section class="sobre">
+  <div class="sobre-texto" id="sobreTexto"></div>
+  <div class="sobre-imagen" id="sobreImagen"></div>
+</section>
+
+<!-- VALORES -->
+<div class="valores">
+  <h2 id="valoresTitulo"></h2>
+  <div class="valores-grid" id="valores"></div>
+</div>
+
+<!-- SEDES -->
+<div class="sedes" id="sedes">
+  <h2 id="sedesTitulo"></h2>
+  <div class="sedes-grid" id="sedesGrid"></div>
+</div>
+
+<!-- CONTACTO -->
+<div id="contacto">
+  <h2 id="contactoTitulo"></h2>
+  <p class="sub" id="contactoSub"></p>
+  <div class="contacto-grid">
+    <div class="contacto-info" id="contactoInfo"></div>
+    <div class="contacto-form">
+      <h3>✉️ Envíanos un mensaje</h3><br>
+      <div class="form-group"><label for="fNombre">Nombre completo *</label><input id="fNombre" type="text" placeholder="Tu nombre y apellido"></div>
+      <div class="form-group"><label for="fCorreo">Correo electrónico *</label><input id="fCorreo" type="email" placeholder="tu@correo.com"></div>
+      <div class="form-group"><label for="fTel">Teléfono</label><input id="fTel" type="tel" placeholder="+51 9XX XXX XXX"></div>
+      <div class="form-group"><label for="fMensaje">Mensaje *</label><textarea id="fMensaje" placeholder="Escribe tu consulta aquí..."></textarea></div>
+      <button class="btn-send" id="enviar">📨 Enviar mensaje por WhatsApp</button>
+      <p id="formAviso" class="form-aviso"></p>
+    </div>
+  </div>
+</div>
+
+<footer id="footer"></footer>
+<div class="footer-bottom" id="footer-bottom"></div>
+<div class="whatsapp-widget" id="whatsapp"></div>
+<button class="scroll-top" id="scrollTop" aria-label="Subir">↑</button>
+
+<script src="js/site.js"></script>
+<script>
+  const E = window.Espiza;
+
+  Promise.all([E.iniciar('inicio'), E.cargar('data/inicio.json')]).then(([s, d]) => {
+
+    /* ── Slider ── */
+    const slides = document.getElementById('slides');
+    const dots = document.getElementById('slideDots');
+    slides.innerHTML = d.slides.map((x, i) => `
+      <div class="slide tema-${E.esc(x.tema || 'azul')}">
+        <div class="slide-bg" style="background-image:url('${E.esc(E.ruta(x.imagen))}')"></div>
+        <div class="slide-content">
+          ${x.etiqueta ? `<span class="slide-badge">${E.esc(x.etiqueta)}</span>` : ''}
+          <h2>${E.esc(x.titulo)}</h2>
+          <p>${E.esc(x.texto)}</p>
+          ${x.boton ? `<a href="${E.esc(x.boton_enlace || '#contacto')}" class="btn">${E.esc(x.boton)}</a>` : ''}
+          ${x.boton2 ? `<a href="${E.esc(x.boton2_enlace || '#')}" class="btn btn-outline">${E.esc(x.boton2)}</a>` : ''}
+        </div>
+      </div>`).join('');
+    dots.innerHTML = d.slides.map((_, i) => `<button class="dot${i ? '' : ' active'}" aria-label="Diapositiva ${i + 1}"></button>`).join('');
+
+    let actual = 0, timer;
+    const total = d.slides.length;
+    const puntos = dots.querySelectorAll('.dot');
+    function ir(n) {
+      actual = (n + total) % total;
+      slides.style.transform = `translateX(-${actual * 100}%)`;
+      puntos.forEach((p, i) => p.classList.toggle('active', i === actual));
+    }
+    function reiniciar() { clearInterval(timer); if (total > 1) timer = setInterval(() => ir(actual + 1), 5000); }
+    puntos.forEach((p, i) => p.addEventListener('click', () => { ir(i); reiniciar(); }));
+    document.getElementById('slidePrev').addEventListener('click', () => { ir(actual - 1); reiniciar(); });
+    document.getElementById('slideNext').addEventListener('click', () => { ir(actual + 1); reiniciar(); });
+    reiniciar();
+
+    /* ── Categorías ── */
+    document.getElementById('categorias').innerHTML = d.categorias.map((c) => `
+      <a href="${E.esc(c.enlace || '#')}" class="cat-card">
+        <div class="cat-icon">${E.esc(c.emoji)}</div>
+        <h3>${E.esc(c.titulo)}</h3>
+        <p>${E.esc(c.texto)}</p>
+      </a>`).join('');
+
+    /* ── Sobre nosotros ── */
+    document.getElementById('sobreTexto').innerHTML = `
+      <h2>${E.esc(d.sobre.titulo)}</h2>
+      ${d.sobre.parrafos.map((p) => `<p>${E.fmt(p)}</p>`).join('')}
+      ${d.sobre.boton ? `<a href="#contacto" class="btn" style="margin-top:10px;">${E.esc(d.sobre.boton)}</a>` : ''}`;
+    const foto = E.img(d.sobre.imagen, s.nombre, 'sobre-foto');
+    document.getElementById('sobreImagen').appendChild(foto);
+
+    /* ── Valores ── */
+    document.getElementById('valoresTitulo').textContent = d.valores_titulo;
+    document.getElementById('valores').innerHTML = d.valores.map((v) => `
+      <div class="valor"><div class="valor-icon">${E.esc(v.emoji)}</div><h3>${E.esc(v.titulo)}</h3><p>${E.esc(v.texto)}</p></div>`).join('');
+
+    /* ── Sedes ── */
+    document.getElementById('sedesTitulo').textContent = d.sedes_titulo;
+    const grid = document.getElementById('sedesGrid');
+    d.sedes.forEach((x) => {
+      const card = document.createElement('div');
+      card.className = 'sede-card';
+      const f = E.img(x.foto, x.nombre, 'sede-foto');
+      card.appendChild(f);
+      card.insertAdjacentHTML('beforeend', `
+        <h3>${E.esc(x.nombre)}</h3>
+        <p>${E.fmt(x.direccion)}</p>
+        <div class="horario">${E.fmt(x.detalle)}</div>
+        ${x.mapa ? `<a href="${E.esc(x.mapa)}" target="_blank" rel="noopener">📍 ¿Cómo llegar?</a>` : ''}`);
+      grid.appendChild(card);
+    });
+
+    /* ── Contacto ── */
+    document.getElementById('contactoTitulo').textContent = d.contacto_titulo;
+    document.getElementById('contactoSub').textContent = d.contacto_subtitulo;
+    document.getElementById('contactoInfo').innerHTML = `
+      <h3>📬 Información de Contacto</h3>
+      <div class="info-item"><span class="info-icon">📞</span><p>${E.esc(s.telefono)}</p></div>
+      <div class="info-item"><span class="info-icon">📍</span><p>${E.fmt(s.direccion)}</p></div>
+      <div class="info-item"><span class="info-icon">🕐</span><p>${E.fmt(s.horario)}</p></div>
+      <div class="info-item"><span class="info-icon"><i class="fab fa-facebook" style="color:#1877f2;"></i></span>
+        <p><a href="${E.esc(s.facebook)}" style="color:#4fc3f7;" target="_blank" rel="noopener">Facebook: ${E.esc(s.nombre)} | ${E.esc(s.subtitulo)}</a></p></div>
+      <div class="info-item"><span class="info-icon"><i class="fab fa-instagram" style="color:#E4405F;"></i></span>
+        <p><a href="${E.esc(s.instagram)}" style="color:#4fc3f7;" target="_blank" rel="noopener">Instagram: ${E.esc(s.nombre)} | ${E.esc(s.subtitulo)}</a></p></div>`;
+
+    // El formulario abre WhatsApp con el mensaje ya escrito
+    document.getElementById('enviar').addEventListener('click', () => {
+      const v = (id) => document.getElementById(id).value.trim();
+      const aviso = document.getElementById('formAviso');
+      if (!v('fNombre') || !v('fCorreo') || !v('fMensaje')) {
+        aviso.textContent = 'Completa tu nombre, correo y mensaje.';
+        return;
+      }
+      aviso.textContent = '';
+      const texto = `Hola, soy ${v('fNombre')}.\n${v('fMensaje')}\n\nCorreo: ${v('fCorreo')}` + (v('fTel') ? `\nTeléfono: ${v('fTel')}` : '');
+      window.open(E.wa(texto), '_blank', 'noopener');
+    });
+  }).catch((e) => {
+    console.error(e);
+    document.getElementById('slides').innerHTML = '<div class="aviso-error">No se pudo cargar el contenido. Abre la web desde un servidor (no con doble clic en el archivo).</div>';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+# ─────────────────────────────────────────────
+#  Panel de edición (Pages CMS) — Espiza Acero
+#  Cada bloque de "content" es una sección del panel.
+# ─────────────────────────────────────────────
+
+media:
+  input: img
+  output: /img
+
+content:
+
+  # ── Datos de la empresa ──
+  - name: sitio
+    label: Datos de la empresa
+    type: file
+    path: data/sitio.json
+    format: json
+    fields:
+      - { name: nombre, label: Nombre de la empresa, type: string }
+      - { name: subtitulo, label: Subtítulo (junto al nombre), type: string }
+      - { name: logo, label: Logo (opcional, reemplaza el texto), type: image }
+      - { name: telefono, label: Teléfono (como se muestra), type: string }
+      - { name: whatsapp, label: "WhatsApp (solo números, con código de país. Ej: 51943173903)", type: string }
+      - { name: facebook, label: Enlace de Facebook, type: string }
+      - { name: instagram, label: Enlace de Instagram, type: string }
+      - { name: direccion, label: Dirección, type: text }
+      - { name: horario, label: Horario de atención, type: text }
+      - { name: frase_footer, label: Frase del pie de página, type: string }
+      - { name: copyright, label: Texto de derechos reservados, type: string }
+      - { name: mensaje_burbuja_whatsapp, label: Mensaje de la burbuja de WhatsApp, type: string }
+      - { name: mensaje_inicial_whatsapp, label: Mensaje que se envía al abrir el chat, type: string }
+
+  # ── Menú superior ──
+  - name: menu
+    label: Menú de navegación
+    type: file
+    path: data/menu.json
+    format: json
+    fields:
+      - name: menus
+        label: Grupos del menú
+        type: object
+        list: true
+        fields:
+          - { name: titulo, label: Nombre del grupo (ej. Ventanas), type: string }
+          - name: items
+            label: Páginas del grupo
+            type: object
+            list: true
+            fields:
+              - { name: nombre, label: Nombre que se ve en el menú, type: string }
+              - { name: pagina, label: "Código de la página (igual al nombre del archivo en Páginas de productos)", type: string }
+
+  # ── Página de inicio ──
+  - name: inicio
+    label: Página de inicio
+    type: file
+    path: data/inicio.json
+    format: json
+    fields:
+      - name: slides
+        label: Banners principales (slider)
+        type: object
+        list: true
+        fields:
+          - { name: imagen, label: Foto de fondo, type: image }
+          - name: tema
+            label: Color de fondo
+            type: select
+            options:
+              values:
+                - { value: azul, label: Azul }
+                - { value: verde, label: Verde }
+                - { value: morado, label: Morado }
+                - { value: rojo, label: Rojo }
+          - { name: etiqueta, label: Etiqueta pequeña, type: string }
+          - { name: titulo, label: Título, type: string }
+          - { name: texto, label: Texto, type: text }
+          - { name: boton, label: Botón 1 (texto), type: string }
+          - { name: boton_enlace, label: Botón 1 (enlace), type: string }
+          - { name: boton2, label: Botón 2 (texto, opcional), type: string }
+          - { name: boton2_enlace, label: Botón 2 (enlace), type: string }
+      - name: categorias
+        label: Tarjetas de categorías
+        type: object
+        list: true
+        fields:
+          - { name: emoji, label: Emoji, type: string }
+          - { name: titulo, label: Título, type: string }
+          - { name: texto, label: Descripción, type: string }
+          - { name: enlace, label: Enlace, type: string }
+      - name: sobre
+        label: Sobre nosotros
+        type: object
+        fields:
+          - { name: titulo, label: Título, type: string }
+          - { name: parrafos, label: "Párrafos (usa **así** para negrita)", type: text, list: true }
+          - { name: boton, label: Texto del botón, type: string }
+          - { name: imagen, label: Foto de la empresa, type: image }
+      - { name: valores_titulo, label: Título de la sección de valores, type: string }
+      - name: valores
+        label: Valores
+        type: object
+        list: true
+        fields:
+          - { name: emoji, label: Emoji, type: string }
+          - { name: titulo, label: Título, type: string }
+          - { name: texto, label: Texto, type: text }
+      - { name: sedes_titulo, label: Título de la sección de sedes, type: string }
+      - name: sedes
+        label: Sedes
+        type: object
+        list: true
+        fields:
+          - { name: nombre, label: Nombre de la sede, type: string }
+          - { name: foto, label: Foto del local, type: image }
+          - { name: direccion, label: Dirección, type: text }
+          - { name: detalle, label: Teléfono y horario, type: text }
+          - { name: mapa, label: Enlace de Google Maps, type: string }
+      - { name: contacto_titulo, label: Título de contacto, type: string }
+      - { name: contacto_subtitulo, label: Subtítulo de contacto, type: text }
+
+  # ── Proyectos ──
+  - name: proyectos
+    label: Proyectos
+    type: file
+    path: data/proyectos.json
+    format: json
+    fields:
+      - { name: titulo, label: Título de la página, type: string }
+      - { name: emoji, label: Emoji, type: string }
+      - { name: frase, label: Frase bajo el título, type: string }
+      - { name: mensaje_whatsapp, label: Mensaje de WhatsApp del botón, type: string }
+      - name: proyectos
+        label: Lista de proyectos
+        type: object
+        list: true
+        fields:
+          - { name: foto, label: Foto, type: image }
+          - { name: nombre, label: Nombre del proyecto, type: string }
+          - { name: descripcion, label: Descripción, type: text }
+          - { name: etiqueta, label: Categoría (etiqueta), type: string }
+
+  # ── Páginas de productos (una por archivo) ──
+  - name: productos
+    label: Páginas de productos
+    type: collection
+    path: data/productos
+    format: json
+    fields:
+      - { name: titulo, label: Título de la página, type: string }
+      - { name: emoji, label: Emoji, type: string }
+      - { name: frase, label: Frase bajo el título, type: string }
+      - name: tema
+        label: Color de la cabecera
+        type: select
+        options:
+          values:
+            - { value: azul, label: Azul }
+            - { value: verde, label: Verde }
+      - { name: mensaje_whatsapp, label: Mensaje de WhatsApp del botón, type: string }
+      - name: fotos
+        label: Fotos de la galería
+        type: object
+        list: true
+        fields:
+          - { name: foto, label: Foto, type: image }
+          - { name: nombre, label: Nombre del modelo, type: string }
+          - { name: descripcion, label: Descripción corta, type: string }

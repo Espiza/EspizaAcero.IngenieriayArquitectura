@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos | Espiza Acero</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="topbar" id="topbar"></div>
+<nav id="nav"></nav>
+
+<div id="contenido"></div>
+
+<footer id="footer"></footer>
+<div class="footer-bottom" id="footer-bottom"></div>
+<div class="whatsapp-widget" id="whatsapp"></div>
+<button class="scroll-top" id="scrollTop" aria-label="Subir">↑</button>
+
+<script src="js/site.js"></script>
+<script>
+  const E = window.Espiza;
+  const slug = new URLSearchParams(location.search).get('p') || '';
+  const cont = document.getElementById('contenido');
+
+  // Solo letras, números y guiones: evita rutas raras
+  if (!/^[a-z0-9-]+$/i.test(slug)) {
+    E.iniciar('').then(() => E.errorPagina(cont, 'Página no encontrada.'));
+  } else {
+    Promise.all([E.iniciar(slug), E.cargar('data/productos/' + slug + '.json')]).then(([s, d]) => {
+      // Ubicar la página dentro del menú (para el camino de migas)
+      let grupo = null, item = null;
+      E.menu.menus.forEach((g) => g.items.forEach((i) => { if (i.pagina === slug) { grupo = g; item = i; } }));
+
+      document.title = `${d.titulo} | ${s.nombre}`;
+      const migas = grupo
+        ? `<a href="index.html">Inicio</a> › ${E.esc(grupo.titulo)} › ${E.esc(item.nombre)}`
+        : `<a href="index.html">Inicio</a> › ${E.esc(d.titulo)}`;
+
+      cont.innerHTML = `
+        <div class="producto-hero tema-${E.esc(d.tema || 'azul')}">
+          <h1>${E.esc(d.emoji)} ${E.esc(d.titulo)}</h1>
+          <p>${E.esc(d.frase)}</p>
+        </div>
+        <div class="breadcrumb">${migas}</div>
+        <div class="galeria-section">
+          <h2>📸 Galería</h2>
+          <p class="subtitulo">Haz clic en cualquier imagen para ampliarla</p>
+          <div class="galeria-grid" id="galeria"></div>
+        </div>
+        <div class="cta-producto">
+          <h2>¿Te interesa este producto?</h2>
+          <p>Contáctanos y te damos la mejor cotización</p>
+          <a href="${E.esc(E.wa(d.mensaje_whatsapp))}" class="btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Cotizar por WhatsApp</a>
+          <a href="index.html#contacto" class="btn btn-outline" style="margin-left:10px;">✉️ Formulario</a>
+        </div>`;
+
+      const lista = d.fotos.map((f) => ({ src: f.foto, texto: `${f.nombre} — ${d.titulo}` }));
+      const galeria = document.getElementById('galeria');
+      d.fotos.forEach((f, i) => {
+        const card = document.createElement('div');
+        card.className = 'galeria-item';
+        card.tabIndex = 0;
+        card.appendChild(E.img(f.foto, `${d.titulo} - ${f.nombre}`));
+        card.insertAdjacentHTML('beforeend',
+          `<div class="galeria-item-info"><h4>${E.esc(f.nombre)}</h4><p>${E.esc(f.descripcion)}</p></div>`);
+        const abrir = () => E.visor.abrir(lista, i);
+        card.addEventListener('click', abrir);
+        card.addEventListener('keydown', (e) => { if (e.key === 'Enter') abrir(); });
+        galeria.appendChild(card);
+      });
+    }).catch((e) => {
+      console.error(e);
+      E.errorPagina(cont, 'No se encontró esta página de productos.');
+    });
+  }
+</script>
+</body>
+</html>
