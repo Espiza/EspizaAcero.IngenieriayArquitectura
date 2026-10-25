@@ -2,8 +2,7 @@ backend:
   name: github
   repo: Espiza/EspizaAcero.IngenieriayArquitectura
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
+  auth_type: implicit
 
 media_folder: "images"
 public_folder: "/images"
