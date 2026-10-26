@@ -1,5 +1,51 @@
 {
-<<<<<<< HEAD
+{
+  "slides": [
+    {
+      "tema": "azul",
+      "imagen": "img/hero-slide-1.jpg",
+      "etiqueta": "PUERTA DE DUCHA",
+      "titulo": "Puerta de Ducha Euro L",
+      "texto": "Puerta de Ducha elegante con acero 304 y vidrio templado, en colores brillante, negro y dorado",
+      "boton": "Pídelo aquí",
+      "boton_enlace": "#contacto",
+      "boton2": "Ver más",
+      "boton2_enlace": "#"
+    },
+    {
+      "tema": "verde",
+      "imagen": "img/hero-slide-2.jpg",
+      "etiqueta": "SERIES",
+      "titulo": "Realizamos trabajos en serie 20,25,35,38,42,62 y 80",
+      "texto": "Desarrollamos soluciones a medida en ventanas, mamparas y puertas con los más altos estándares de resistencia y acabado para su obra.",
+      "boton": "Pídelo aquí",
+      "boton_enlace": "#contacto",
+      "boton2": "",
+      "boton2_enlace": ""
+    },
+    {
+      "tema": "morado",
+      "imagen": "img/hero-slide-3.jpg",
+      "etiqueta": "PUERTAS",
+      "titulo": "Diseño, Estilo y Seguridad en Puertas de Aluminio",
+      "texto": "Fabricación e instalación de puertas de aluminio con acabados modernos y personalizados. Aportamos valor estético y resistencia estructural a los accesos de su proyecto, adaptándonos a cualquier estilo arquitectónico.",
+      "boton": "Pídelo aquí",
+      "boton_enlace": "#contacto",
+      "boton2": "",
+      "boton2_enlace": ""
+    },
+    {
+      "tema": "rojo",
+      "imagen": "img/hero-slide-4.jpg",
+      "etiqueta": "MELAMINA",
+      "titulo": "Proyectos y Muebles en Melamina A Medida",
+      "texto": "Fabricación y montaje de mobiliario personalizado para hogar y oficina. Diseñamos e instalamos cocinas integrales, closets, centros de entretenimiento y escritorios optimizando cada centímetro de su espacio con acabados de primera.",
+      "boton": "Pídelo aquí",
+      "boton_enlace": "#contacto",
+      "boton2": "",
+      "boton2_enlace": ""
+    }
+  ],
   "sedes": [
     {
       "nombre": "🏢 Paucará",
@@ -8,27 +54,8 @@
       "detalle": "📞 943 173 903\nLun–Vie: 8:30am – 5:00pm\nSábado: 8:30am – 1:00pm",
       "mapa": "https://maps.app.goo.gl/d59jFbLALrHDr6kv5"
     }
-=======
-  "slides": [
-    { "tema": "azul", "imagen": "img/hero-slide-1.jpg", "etiqueta": "PUERTA DE DUCHA",
-      "titulo": "Puerta de Ducha Euro L",
-      "texto": "Puerta de Ducha elegante con acero 304 y vidrio templado, en colores brillante, negro y dorado",
-      "boton": "Pídelo aquí", "boton_enlace": "#contacto",
-      "boton2": "Ver más", "boton2_enlace": "#" },
-    { "tema": "verde", "imagen": "img/hero-slide-2.jpg", "etiqueta": "SERIES",
-      "titulo": "Realizamos trabajos en serie 20,25,35,38,42,62 y 80",
-      "texto": "Desarrollamos soluciones a medida en ventanas, mamparas y puertas con los más altos estándares de resistencia y acabado para su obra.",
-      "boton": "Pídelo aquí", "boton_enlace": "#contacto", "boton2": "", "boton2_enlace": "" },
-    { "tema": "morado", "imagen": "img/hero-slide-3.jpg", "etiqueta": "PUERTAS",
-      "titulo": "Diseño, Estilo y Seguridad en Puertas de Aluminio",
-      "texto": "Fabricación e instalación de puertas de aluminio con acabados modernos y personalizados. Aportamos valor estético y resistencia estructural a los accesos de su proyecto, adaptándonos a cualquier estilo arquitectónico.",
-      "boton": "Pídelo aquí", "boton_enlace": "#contacto", "boton2": "", "boton2_enlace": "" },
-    { "tema": "rojo", "imagen": "img/hero-slide-4.jpg", "etiqueta": "MELAMINA",
-      "titulo": "Proyectos y Muebles en Melamina A Medida",
-      "texto": "Fabricación y montaje de mobiliario personalizado para hogar y oficina. Diseñamos e instalamos cocinas integrales, closets, centros de entretenimiento y escritorios optimizando cada centímetro de su espacio con acabados de primera",
-      "boton": "Pídelo aquí", "boton_enlace": "#contacto", "boton2": "", "boton2_enlace": "" }
->>>>>>> b4e12da (Actualizando el eslogan de la pagina)
-  ],
+  ]
+}  ],
   "categorias": [
     {
       "emoji": "🪟",
