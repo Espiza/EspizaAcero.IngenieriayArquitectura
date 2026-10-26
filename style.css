@@ -748,4 +748,15 @@ footer ul li a:hover { color: #4fc3f7; }
   max-width: 410px;
 }
 /* ── Carrusel: imágenes más visibles ── */
-.slide-bg { opacity: .10; }
+.slide-bg { opacity: .9; }
+/* ── Botones de cotizar en celular: uno debajo del otro, centrados ── */
+@media (max-width: 768px) {
+  .cta-producto .btn {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 14px !important;
+    text-align: center;
+  }
+  .cta-producto .btn:last-of-type { margin-bottom: 0 !important; }
+}

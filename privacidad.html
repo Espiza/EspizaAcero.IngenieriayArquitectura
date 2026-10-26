@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad | Espiza Acero</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Estilos propios de esta página (no tocan style.css) */
+    .politica { max-width: 860px; margin: 0 auto; padding: 50px 24px 70px; color: #444; }
+    .politica .intro { font-size: 15px; line-height: 1.8; margin-bottom: 30px; }
+    .politica h2 {
+      font-size: 20px; color: #1a1a2e; margin: 34px 0 12px;
+      border-left: 4px solid #2980b9; padding-left: 12px;
+    }
+    .politica p, .politica li { font-size: 15px; line-height: 1.8; }
+    .politica p { margin-bottom: 12px; }
+    .politica ul { margin: 0 0 12px 22px; }
+    .politica li { margin-bottom: 6px; }
+    .politica a { color: #2980b9; }
+    .politica .actualizado {
+      margin-top: 40px; padding-top: 16px; border-top: 1px solid #e3e8ee;
+      font-size: 13px; color: #888;
+    }
+    @media (max-width: 768px) {
+      .politica { padding: 34px 18px 50px; }
+      .politica h2 { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar" id="topbar"></div>
+<nav id="nav"></nav>
+
+<div id="contenido"></div>
+
+<footer id="footer"></footer>
+<div class="footer-bottom" id="footer-bottom"></div>
+<div class="whatsapp-widget" id="whatsapp"></div>
+<button class="scroll-top" id="scrollTop" aria-label="Subir">↑</button>
+
+<script src="js/site.js"></script>
+<script src="js/menu-movil.js"></script>
+<script>
+  /* ═══════════════════════════════════════════════
+     DATOS DE LA EMPRESA
+     ═══════════════════════════════════════════════ */
+  const RAZON_SOCIAL = '';   // Si lo dejas vacío se usa el nombre de la web. Cuando tengas el nombre legal, escríbelo aquí.
+  const RUC          = '';   // Vacío = no se muestra. Cuando lo tengas, escríbelo aquí: '20123456789'
+  const CORREO       = 'brhn.acero@gmail.com';
+  const FECHA        = '26 de octubre de 2026';
+
+  const E = window.Espiza;
+  const cont = document.getElementById('contenido');
+  const pend = (v) => v ? E.esc(v) : '<strong style="color:#c0392b;">[COMPLETAR]</strong>';
+  const enlaceCorreo = (v) => v ? `<a href="mailto:${E.esc(v)}">${E.esc(v)}</a>` : pend(v);
+
+  E.iniciar('privacidad').then((s) => {
+    document.title = `Política de Privacidad | ${s.nombre}`;
+    const nombreWeb = `${s.nombre} | ${s.subtitulo}`;
+    const responsable = RAZON_SOCIAL
+      ? `<strong>${E.esc(RAZON_SOCIAL)}</strong>, que opera bajo el nombre comercial <strong>${E.esc(nombreWeb)}</strong>`
+      : `<strong>${E.esc(nombreWeb)}</strong>`;
+    const datoRuc = RUC ? `, con RUC ${E.esc(RUC)}` : '';
+
+    cont.innerHTML = `
+      <div class="producto-hero tema-azul">
+        <h1>🔒 Política de Privacidad</h1>
+        <p>Cómo cuidamos los datos que nos entregas</p>
+      </div>
+      <div class="breadcrumb"><a href="index.html">Inicio</a> › Política de Privacidad</div>
+
+      <div class="politica">
+        <p class="intro">
+          Esta política te informa qué datos personales recopilamos en este sitio web, para qué los usamos
+          y cómo puedes ejercer tus derechos, de acuerdo con la Ley N.° 29733, Ley de Protección de Datos
+          Personales, y su reglamento.
+        </p>
+
+        <h2>1. Responsable del tratamiento</h2>
+        <p>
+          ${responsable}${datoRuc}.
+        </p>
+        <p>
+          Domicilio: ${E.fmt(s.direccion).replace(/<br>/g, ', ')}<br>
+          Teléfono / WhatsApp: ${E.esc(s.telefono)}<br>
+          Correo de contacto: ${enlaceCorreo(CORREO)}
+        </p>
+
+        <h2>2. Datos que recopilamos</h2>
+        <p>Recopilamos únicamente los datos que tú nos entregas de forma voluntaria al usar el formulario de contacto:</p>
+        <ul>
+          <li>Nombre completo</li>
+          <li>Correo electrónico</li>
+          <li>Teléfono (opcional)</li>
+          <li>El mensaje de tu consulta</li>
+        </ul>
+
+        <h2>3. Para qué usamos tus datos</h2>
+        <p>Usamos tus datos solo para responder tus consultas y enviarte cotizaciones sobre nuestros productos y servicios. No los usamos para otros fines sin tu consentimiento.</p>
+
+        <h2>4. Cómo se envía la información</h2>
+        <p>
+          Al presionar “Enviar mensaje por WhatsApp”, el formulario abre WhatsApp con tu mensaje ya escrito.
+          Los datos se transmiten por esa plataforma, que se rige por sus propias políticas de privacidad.
+          Esta página web no guarda tus datos en una base de datos propia.
+        </p>
+
+        <h2>5. Con quién compartimos tus datos</h2>
+        <p>No vendemos ni cedemos tus datos personales. Solo pueden intervenir los servicios necesarios para atenderte, como WhatsApp, o las autoridades cuando una norma o una orden judicial lo exija.</p>
+
+        <h2>6. Servicios externos de este sitio</h2>
+        <p>
+          Para mostrar íconos, esta web carga recursos de Font Awesome desde un servidor externo, por lo que
+          ese proveedor puede registrar tu dirección IP al visitar el sitio. También enlazamos a Facebook,
+          Instagram y WhatsApp; cada uno tiene sus propias políticas y no somos responsables de ellas.
+        </p>
+
+        <h2>7. Tiempo de conservación</h2>
+        <p>Conservamos tus datos solo el tiempo necesario para atender tu consulta o cotización, y mientras una norma nos obligue a mantenerlos.</p>
+
+        <h2>8. Seguridad</h2>
+        <p>Aplicamos medidas razonables para proteger la información que nos entregas y evitar su pérdida o acceso no autorizado.</p>
+
+        <h2>9. Tus derechos</h2>
+        <p>Puedes pedirnos en cualquier momento:</p>
+        <ul>
+          <li>Acceder a los datos que tenemos sobre ti.</li>
+          <li>Rectificar datos incompletos o inexactos.</li>
+          <li>Cancelar (eliminar) tus datos.</li>
+          <li>Oponerte a que los usemos.</li>
+        </ul>
+        <p>
+          Escríbenos a ${enlaceCorreo(CORREO)} o por WhatsApp al
+          <a href="${E.esc(E.wa('Hola, quiero ejercer mis derechos sobre mis datos personales'))}" target="_blank" rel="noopener">${E.esc(s.telefono)}</a>.
+          Si consideras que no atendimos tu solicitud, puedes acudir a la Autoridad Nacional de Protección de Datos Personales.
+        </p>
+
+        <h2>10. Cambios en esta política</h2>
+        <p>Podemos actualizar esta política para adaptarla a cambios legales o del sitio. La versión vigente siempre estará disponible en esta página.</p>
+
+        <p class="actualizado">Última actualización: ${E.esc(FECHA)}</p>
+      </div>`;
+  }).catch((e) => {
+    console.error(e);
+    E.errorPagina(cont, 'No se pudo cargar la página.');
+  });
+</script>
+</body>
+</html>

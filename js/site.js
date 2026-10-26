@@ -83,8 +83,8 @@
           <a href="${Espiza.esc(s.instagram)}" class="social-btn" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
         </div>
       </div>
-      <div><h4>Nosotros</h4><ul><li><a href="proyectos.html">Proyectos</a></li></ul></div>
-      <div><h4>Productos</h4><ul>${productos}</ul></div>
+      <div><h4>Nosotros</h4><ul><li><a href="mision-vision.html">Misión y Visión</a></li><li><a href="privacidad.html">Política de Privacidad</a></li><li><a href="terminos.html">Términos y Condiciones</a></li></ul></div>
+      <div><h4>Productos</h4><ul>${productos}<li><a href="proyectos.html">Proyectos</a></li></ul></div>
       <div>
         <h4>Contacto</h4>
         <ul>

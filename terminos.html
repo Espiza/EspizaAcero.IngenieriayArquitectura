@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Términos y Condiciones | Espiza Acero</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Estilos propios de esta página (no tocan style.css) */
+    .politica { max-width: 860px; margin: 0 auto; padding: 50px 24px 70px; color: #444; }
+    .politica .intro { font-size: 15px; line-height: 1.8; margin-bottom: 30px; }
+    .politica h2 {
+      font-size: 20px; color: #1a1a2e; margin: 34px 0 12px;
+      border-left: 4px solid #2980b9; padding-left: 12px;
+    }
+    .politica p, .politica li { font-size: 15px; line-height: 1.8; }
+    .politica p { margin-bottom: 12px; }
+    .politica ul { margin: 0 0 12px 22px; }
+    .politica li { margin-bottom: 6px; }
+    .politica a { color: #2980b9; }
+    .politica .actualizado {
+      margin-top: 40px; padding-top: 16px; border-top: 1px solid #e3e8ee;
+      font-size: 13px; color: #888;
+    }
+    @media (max-width: 768px) {
+      .politica { padding: 34px 18px 50px; }
+      .politica h2 { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar" id="topbar"></div>
+<nav id="nav"></nav>
+
+<div id="contenido"></div>
+
+<footer id="footer"></footer>
+<div class="footer-bottom" id="footer-bottom"></div>
+<div class="whatsapp-widget" id="whatsapp"></div>
+<button class="scroll-top" id="scrollTop" aria-label="Subir">↑</button>
+
+<script src="js/site.js"></script>
+<script src="js/menu-movil.js"></script>
+<script>
+  /* ═══════════════════════════════════════════════
+     DATOS DE LA EMPRESA (los mismos de privacidad.html)
+     ═══════════════════════════════════════════════ */
+  const RAZON_SOCIAL = '';   // Vacío = se usa el nombre de la web. Cuando tengas el nombre legal, escríbelo aquí.
+  const RUC          = '';   // Vacío = no se muestra. Cuando lo tengas: '20123456789'
+  const CORREO       = 'brhn.acero@gmail.com';
+  const FECHA        = '26 de octubre de 2026';
+
+  const E = window.Espiza;
+  const cont = document.getElementById('contenido');
+  const pend = (v) => v ? E.esc(v) : '<strong style="color:#c0392b;">[COMPLETAR]</strong>';
+  const enlaceCorreo = (v) => v ? `<a href="mailto:${E.esc(v)}">${E.esc(v)}</a>` : pend(v);
+
+  E.iniciar('terminos').then((s) => {
+    document.title = `Términos y Condiciones | ${s.nombre}`;
+    const nombreWeb = `${s.nombre} | ${s.subtitulo}`;
+    const responsable = RAZON_SOCIAL
+      ? `<strong>${E.esc(RAZON_SOCIAL)}</strong>, que opera bajo el nombre comercial <strong>${E.esc(nombreWeb)}</strong>`
+      : `<strong>${E.esc(nombreWeb)}</strong>`;
+    const datoRuc = RUC ? `, con RUC ${E.esc(RUC)}` : '';
+
+    cont.innerHTML = `
+      <div class="producto-hero tema-azul">
+        <h1>📄 Términos y Condiciones</h1>
+        <p>Reglas para usar este sitio y solicitar nuestros servicios</p>
+      </div>
+      <div class="breadcrumb"><a href="index.html">Inicio</a> › Términos y Condiciones</div>
+
+      <div class="politica">
+        <p class="intro">
+          Al entrar y usar este sitio web aceptas estos términos y condiciones. Si no estás de acuerdo con
+          alguno de ellos, te pedimos que no uses el sitio.
+        </p>
+
+        <h2>1. Quiénes somos</h2>
+        <p>
+          Este sitio pertenece a ${responsable}${datoRuc}. Nos dedicamos a la venta de productos y a la
+          realización de trabajos en vidrio, aluminio y melamina.
+        </p>
+        <p>
+          Domicilio: ${E.fmt(s.direccion).replace(/<br>/g, ', ')}<br>
+          Teléfono / WhatsApp: ${E.esc(s.telefono)}<br>
+          Correo de contacto: ${enlaceCorreo(CORREO)}
+        </p>
+
+        <h2>2. Uso del sitio</h2>
+        <p>Puedes usar este sitio para conocer nuestros productos y proyectos, y para pedir información o cotizaciones. Te comprometes a:</p>
+        <ul>
+          <li>Darnos datos verdaderos cuando nos escribas.</li>
+          <li>No usar el sitio para fines ilegales ni para dañar su funcionamiento.</li>
+          <li>No intentar acceder a partes del sitio que no estén abiertas al público.</li>
+        </ul>
+
+        <h2>3. Información de productos e imágenes</h2>
+        <p>
+          Procuramos que la información del sitio sea correcta y esté actualizada, pero las descripciones,
+          colores, acabados y fotografías son referenciales. El resultado final de un trabajo puede variar
+          según las medidas, los materiales disponibles y las condiciones de la obra.
+        </p>
+
+        <h2>4. Cotizaciones y precios</h2>
+        <ul>
+          <li>Este sitio no es una tienda en línea: no se compra ni se paga a través de él.</li>
+          <li>Los precios, medidas, plazos y condiciones de cada trabajo se confirman en la cotización que te enviamos.</li>
+          <li>Una cotización tiene el tiempo de vigencia que figure en ella y puede cambiar si cambian las medidas, los materiales o lo que pidas.</li>
+          <li>El trabajo se considera acordado cuando ambas partes confirman la cotización o firman el contrato correspondiente.</li>
+        </ul>
+
+        <h2>5. Pagos, plazos de entrega y garantía</h2>
+        <p>
+          La forma de pago, los plazos de entrega, la instalación y la garantía de cada producto o trabajo
+          se indican en la cotización o en el contrato que acordemos contigo. Lo que figure por escrito en
+          ese documento es lo que rige para ese trabajo.
+        </p>
+
+        <h2>6. Propiedad intelectual</h2>
+        <p>
+          Los textos, imágenes, fotografías de trabajos, logotipos y el diseño de este sitio pertenecen a
+          ${E.esc(nombreWeb)} o se usan con autorización. No puedes copiarlos, reproducirlos ni usarlos con
+          fines comerciales sin nuestro permiso por escrito.
+        </p>
+
+        <h2>7. Enlaces y servicios de terceros</h2>
+        <p>
+          Este sitio enlaza a Facebook, Instagram y WhatsApp, y usa recursos externos como Font Awesome.
+          Esos servicios tienen sus propios términos y políticas, y no somos responsables de su contenido
+          ni de su funcionamiento.
+        </p>
+
+        <h2>8. Responsabilidad</h2>
+        <p>
+          Hacemos lo posible para que el sitio funcione sin interrupciones, pero no garantizamos que esté
+          siempre disponible o libre de errores. No somos responsables por daños que surjan de un uso
+          indebido del sitio o de fallas de internet o de servicios de terceros. Esto no limita los derechos
+          que la ley te reconoce como consumidor.
+        </p>
+
+        <h2>9. Datos personales</h2>
+        <p>
+          Cómo tratamos los datos que nos entregas está explicado en nuestra
+          <a href="privacidad.html">Política de Privacidad</a>.
+        </p>
+
+        <h2>10. Cambios en estos términos</h2>
+        <p>
+          Podemos modificar estos términos cuando sea necesario. La versión vigente siempre estará en esta
+          página, con su fecha de actualización.
+        </p>
+
+        <h2>11. Ley aplicable y reclamos</h2>
+        <p>
+          Estos términos se rigen por las leyes de la República del Perú. Para cualquier duda, queja o
+          reclamo escríbenos a ${enlaceCorreo(CORREO)} o por WhatsApp al
+          <a href="${E.esc(E.wa('Hola, quiero hacer una consulta sobre los términos y condiciones'))}" target="_blank" rel="noopener">${E.esc(s.telefono)}</a>.
+          Cualquier controversia se resolverá ante los jueces competentes según la ley peruana.
+        </p>
+
+        <p class="actualizado">Última actualización: ${E.esc(FECHA)}</p>
+      </div>`;
+  }).catch((e) => {
+    console.error(e);
+    E.errorPagina(cont, 'No se pudo cargar la página.');
+  });
+</script>
+</body>
+</html>

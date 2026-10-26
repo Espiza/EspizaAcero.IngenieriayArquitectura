@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misión y Visión | Espiza Acero</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Estilos propios de esta página (no tocan style.css) */
+    .mv-section { max-width: 1000px; margin: 0 auto; padding: 60px 24px; }
+    .mv-grid { display: flex; gap: 28px; flex-wrap: wrap; }
+    .mv-card {
+      flex: 1; min-width: 280px;
+      background: #fff; border-radius: 12px;
+      padding: 36px 32px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border-top: 4px solid #2980b9;
+    }
+    .mv-icon { font-size: 44px; margin-bottom: 14px; }
+    .mv-card h2 { font-size: 24px; color: #1a1a2e; margin-bottom: 14px; }
+    .mv-card p { font-size: 15px; color: #555; line-height: 1.8; }
+    @media (max-width: 768px) {
+      .mv-section { padding: 36px 16px; }
+      .mv-card { padding: 28px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar" id="topbar"></div>
+<nav id="nav"></nav>
+
+<div id="contenido"></div>
+
+<footer id="footer"></footer>
+<div class="footer-bottom" id="footer-bottom"></div>
+<div class="whatsapp-widget" id="whatsapp"></div>
+<button class="scroll-top" id="scrollTop" aria-label="Subir">↑</button>
+
+<script src="js/site.js"></script>
+<script src="js/menu-movil.js"></script>
+<script>
+  /* ═══════════════════════════════════════════════
+     TEXTOS (edítalos aquí cuando quieras)
+     ═══════════════════════════════════════════════ */
+  const MISION = 'Fabricar e instalar soluciones en vidrio, aluminio y melamina para viviendas, oficinas y obras, con materiales de calidad, acabados precisos y atención personalizada desde la primera consulta hasta la entrega final, cumpliendo los plazos acordados.';
+  const VISION = 'Ser una empresa peruana de referencia en carpintería de aluminio, vidrio y mobiliario a medida, reconocida por la seguridad, la garantía y el cumplimiento de sus trabajos, y por transformar los espacios de nuestros clientes con ingeniería y arquitectura.';
+
+  const E = window.Espiza;
+  const cont = document.getElementById('contenido');
+
+  E.iniciar('mision-vision').then((s) => {
+    document.title = `Misión y Visión | ${s.nombre}`;
+
+    cont.innerHTML = `
+      <div class="producto-hero tema-azul">
+        <h1>🎯 Misión y Visión</h1>
+        <p>Lo que hacemos y hacia dónde vamos en ${E.esc(s.nombre)} | ${E.esc(s.subtitulo)}</p>
+      </div>
+      <div class="breadcrumb"><a href="index.html">Inicio</a> › Misión y Visión</div>
+
+      <div class="mv-section">
+        <div class="mv-grid">
+          <div class="mv-card">
+            <div class="mv-icon">🛠️</div>
+            <h2>Misión</h2>
+            <p>${E.fmt(MISION)}</p>
+          </div>
+          <div class="mv-card">
+            <div class="mv-icon">🔭</div>
+            <h2>Visión</h2>
+            <p>${E.fmt(VISION)}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-producto">
+        <h2>¿Quieres trabajar con nosotros?</h2>
+        <p>Cuéntanos qué necesitas y te damos la mejor cotización</p>
+        <a href="${E.esc(E.wa(s.mensaje_inicial_whatsapp))}" class="btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Escribir por WhatsApp</a>
+        <a href="index.html#contacto" class="btn btn-outline" style="margin-left:10px;">✉️ Formulario de contacto</a>
+      </div>`;
+  }).catch((e) => {
+    console.error(e);
+    E.errorPagina(cont, 'No se pudo cargar la página.');
+  });
+</script>
+</body>
+</html>
