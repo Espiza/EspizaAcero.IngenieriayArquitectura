@@ -643,64 +643,48 @@ footer ul li a:hover { color: #4fc3f7; }
   .slides { transition: none; }
   .galeria-item, .cat-card { transition: none; }
 }
-/* Estilos generales de la cabecera / menú */
-#nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ffffff;
-  padding: 12px 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: relative;
-  z-index: 1000;
-}
+/* =========================================
+   ESTILOS PARA MENÚ MÓVIL (HAMBURGUESA)
+   ========================================= */
 
-/* Enlaces del menú en pantalla grande */
-#nav .nav-links {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-}
-
-#nav .nav-links a {
-  text-decoration: none;
-  color: #333333;
-  font-weight: 600;
-  font-size: 15px;
-}
-
-/* Botón de 3 líneas (Hamburguesa) */
-.nav-toggle {
+/* Por defecto en computadora el botón de 3 líneas está oculto */
+.nav-toggle, .menu-toggle {
   display: none;
   background: none;
   border: none;
   font-size: 26px;
   cursor: pointer;
-  color: #111111;
+  color: #111;
 }
 
-/* 📱 ADAPTACIÓN PARA CELULARES (Menos de 768px) */
+/* En celulares (pantallas menores a 768px) */
 @media (max-width: 768px) {
-  .nav-toggle {
-    display: block; /* Muestra las 3 líneas a la derecha en celular */
+  /* Muestra el botón de las 3 líneas a la derecha */
+  .nav-toggle, .menu-toggle {
+    display: block !important;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 1100;
   }
 
-  #nav .nav-links {
-    display: none; /* Oculta la lista de enlaces por defecto */
+  /* Oculta los enlaces de navegación por defecto en celular */
+  #nav ul, #nav .nav-links {
+    display: none;
     flex-direction: column;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
     background-color: #ffffff;
-    padding: 15px 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 1050;
   }
 
-  #nav .nav-links.active {
-    display: flex; /* Despliega el menú cuando se presiona el botón */
+  /* Cuando se active con JavaScript, muestra el menú desplegable */
+  #nav ul.active, #nav .nav-links.active {
+    display: flex !important;
   }
 }
 /* Forzar que las redes sociales y contactos de la barra superior estén en una sola línea */
