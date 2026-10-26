@@ -700,3 +700,83 @@ footer ul li a:hover { color: #4fc3f7; }
   align-items: center;
   margin-right: 15px; /* Espacio entre Facebook e Instagram */
 }
+/* =========================================
+   ESTILOS DE NAVEGACIÓN Y MENÚ MÓVIL
+   ========================================= */
+
+/* Estilos para Pantallas Grandes (Computadoras) */
+#nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 12px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1000;
+}
+
+#nav .nav-links, #nav ul {
+  display: flex;
+  list-style: none;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+#nav a {
+  text-decoration: none;
+  color: #333333;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* El botón de 3 líneas permanece oculto en computadoras */
+.nav-toggle, .menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #111111;
+}
+
+/* 📱 ADAPTACIÓN EXCLUSIVA PARA CELULARES (Menos de 768px) */
+@media (max-width: 768px) {
+  /* Muestra el botón hamburguesa arriba a la derecha */
+  .nav-toggle, .menu-toggle {
+    display: block !important;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 1100;
+  }
+
+  /* Oculta la lista del menú por defecto */
+  #nav .nav-links, #nav ul {
+    display: none !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #111111; /* Fondo oscuro elegante */
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1050;
+  }
+
+  /* Estilo de los enlaces en el desplegable celular */
+  #nav .nav-links a, #nav ul a {
+    color: #ffffff !important;
+    padding: 12px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #222;
+    display: block;
+  }
+
+  /* Despliega el menú cuando tiene la clase activa */
+  #nav .nav-links.active, #nav ul.active {
+    display: flex !important;
+  }
+}

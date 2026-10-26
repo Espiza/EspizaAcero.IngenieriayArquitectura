@@ -180,7 +180,7 @@
     console.error(e);
     document.getElementById('slides').innerHTML = '<div class="aviso-error">No se pudo cargar el contenido. Abre la web desde un servidor (no con doble clic en el archivo).</div>';
   });
-  /* 📌 AGREGA ESTE CÓDIGO AQUÍ ABAJO, al final del script principal */
+/* Controlador del botón hamburguesa para celulares */
   document.addEventListener('click', function(e) {
     const btn = e.target.closest('.nav-toggle') || e.target.closest('.menu-toggle');
     if (btn) {
@@ -188,8 +188,7 @@
       if (menu) {
         menu.classList.toggle('active');
       }
-    }
-  });
+    }  });
 </script>
 </body>
 </html>

@@ -1,4 +1,13 @@
 {
+  "menu": [
+    { "titulo": "Ventanas ▾", "enlace": "#ventanas" },
+    { "titulo": "Mamparas ▾", "enlace": "#mamparas" },
+    { "titulo": "Puertas ▾", "enlace": "#puertas" },
+    { "titulo": "Puertas de Ducha ▾", "enlace": "#ducha" },
+    { "titulo": "Melamina ▾", "enlace": "#melamina" },
+    { "titulo": "Proyectos", "enlace": "#categorias" },
+    { "titulo": "Contáctanos", "enlace": "#contacto" }
+  ],
   "slides": [
     { 
       "tema": "azul", 
