@@ -747,3 +747,5 @@ footer ul li a:hover { color: #4fc3f7; }
   width: 100%;
   max-width: 410px;
 }
+/* ── Carrusel: imágenes más visibles ── */
+.slide-bg { opacity: .9; }
