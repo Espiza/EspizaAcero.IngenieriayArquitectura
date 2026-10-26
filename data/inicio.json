@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "sedes": [
     {
       "nombre": "🏢 Paucará",
@@ -26,6 +27,7 @@
       "titulo": "Proyectos y Muebles en Melamina A Medida",
       "texto": "Fabricación y montaje de mobiliario personalizado para hogar y oficina. Diseñamos e instalamos cocinas integrales, closets, centros de entretenimiento y escritorios optimizando cada centímetro de su espacio con acabados de primera",
       "boton": "Pídelo aquí", "boton_enlace": "#contacto", "boton2": "", "boton2_enlace": "" }
+>>>>>>> b4e12da (Actualizando el eslogan de la pagina)
   ],
   "categorias": [
     {
