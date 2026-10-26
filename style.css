@@ -643,140 +643,97 @@ footer ul li a:hover { color: #4fc3f7; }
   .slides { transition: none; }
   .galeria-item, .cat-card { transition: none; }
 }
-/* =========================================
-   ESTILOS PARA MENÚ MÓVIL (HAMBURGUESA)
-   ========================================= */
 
-/* Por defecto en computadora el botón de 3 líneas está oculto */
-.nav-toggle, .menu-toggle {
+/* ══════════════════════════════════════════
+   MENÚ MÓVIL (HAMBURGUESA)
+   ══════════════════════════════════════════ */
+
+/* Topbar: Facebook e Instagram en una sola línea */
+.topbar, .topbar > div, .info-item { display: flex; align-items: center; flex-direction: row; }
+.topbar a, .info-item a { display: inline-flex; align-items: center; margin-right: 15px; }
+
+/* Computadora: el botón no se ve */
+.nav-toggle {
   display: none;
   background: none;
   border: none;
-  font-size: 26px;
+  font-size: 28px;
+  line-height: 1;
+  padding: 6px 10px;
   cursor: pointer;
-  color: #111;
+  color: #1a1a2e;
 }
 
-/* En celulares (pantallas menores a 768px) */
 @media (max-width: 768px) {
-  /* Muestra el botón de las 3 líneas a la derecha */
-  .nav-toggle, .menu-toggle {
-    display: block !important;
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    z-index: 1100;
+  #nav {
+    flex-wrap: nowrap;
+    padding: 10px 16px;
   }
+  .nav-toggle { display: block; margin-left: auto; }
 
-  /* Oculta los enlaces de navegación por defecto en celular */
-  #nav ul, #nav .nav-links {
+  /* Lista oculta hasta tocar ☰ */
+  #nav .nav-links {
     display: none;
     flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #ffffff;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    background: #fff;
+    padding: 6px 0 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,.18);
     z-index: 1050;
   }
+  #nav .nav-links.active { display: flex; }
 
-  /* Cuando se active con JavaScript, muestra el menú desplegable */
-  #nav ul.active, #nav .nav-links.active {
-    display: flex !important;
+  #nav .nav-links > li { width: 100%; border-bottom: 1px solid #eee; }
+  #nav .nav-links > li > a {
+    padding: 14px 20px;
+    font-size: 15px;
+    border-radius: 0;
   }
-}
-/* Forzar que las redes sociales y contactos de la barra superior estén en una sola línea */
-.topbar, .topbar > div, .info-item {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-}
 
-/* Espaciado horizontal entre los íconos de Facebook e Instagram */
-.topbar a, .info-item a {
-  display: inline-flex;
-  align-items: center;
-  margin-right: 15px; /* Espacio entre Facebook e Instagram */
-}
-/* =========================================
-   ESTILOS DE NAVEGACIÓN Y MENÚ MÓVIL
-   ========================================= */
-
-/* Estilos para Pantallas Grandes (Computadoras) */
-#nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ffffff;
-  padding: 12px 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: relative;
-  z-index: 1000;
-}
-
-#nav .nav-links, #nav ul {
-  display: flex;
-  list-style: none;
-  gap: 18px;
-  margin: 0;
-  padding: 0;
-}
-
-#nav a {
-  text-decoration: none;
-  color: #333333;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-/* El botón de 3 líneas permanece oculto en computadoras */
-.nav-toggle, .menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 26px;
-  cursor: pointer;
-  color: #111111;
-}
-
-/* 📱 ADAPTACIÓN EXCLUSIVA PARA CELULARES (Menos de 768px) */
+  /* Submenú (acordeón): cerrado por defecto, también ignora :hover */
+  #nav .nav-links .dropdown,
+  #nav .nav-links > li:hover .dropdown {
+    display: none;
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    min-width: 0;
+    background: #f5f9fc;
+  }
+  #nav .nav-links > li.open .dropdown { display: block; }
+  #nav .nav-links .dropdown a { padding: 12px 20px 12px 36px; font-size: 14px; }
+  #nav .nav-links > li.open > a { background: #2980b9; color: #fff; }
+  /* ── Cabecera en celular: texto pequeño y centrado ── */
 @media (max-width: 768px) {
-  /* Muestra el botón hamburguesa arriba a la derecha */
-  .nav-toggle, .menu-toggle {
-    display: block !important;
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    z-index: 1100;
+  .topbar { padding: 8px 14px; }
+
+  .topbar > div {
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    text-align: center;
   }
 
-  /* Oculta la lista del menú por defecto */
-  #nav .nav-links, #nav ul {
-    display: none !important;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #111111; /* Fondo oscuro elegante */
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 1050;
+  .topbar > div > span {
+    max-width: 100% !important;
+    font-size: 10.5px !important;
+    line-height: 1.45;
   }
 
-  /* Estilo de los enlaces en el desplegable celular */
-  #nav .nav-links a, #nav ul a {
-    color: #ffffff !important;
-    padding: 12px 0;
-    font-size: 16px;
-    border-bottom: 1px solid #222;
-    display: block;
+  .topbar > div > div {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
   }
 
-  /* Despliega el menú cuando tiene la clase activa */
-  #nav .nav-links.active, #nav ul.active {
-    display: flex !important;
-  }
+  .topbar a { margin-right: 0; font-size: 11px; }
+}
 }
