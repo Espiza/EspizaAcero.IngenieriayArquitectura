@@ -737,3 +737,13 @@ footer ul li a:hover { color: #4fc3f7; }
   .topbar a { margin-right: 0; font-size: 11px; }
 }
 }
+/* ── Sedes: tarjeta centrada debajo del título ── */
+.sedes-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.sede-card {
+  width: 100%;
+  max-width: 410px;
+}
