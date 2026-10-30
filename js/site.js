@@ -89,8 +89,7 @@
         <h4>Contacto</h4>
         <ul>
           <li><a href="tel:+${Espiza.esc(s.whatsapp)}">📞 ${Espiza.esc(s.telefono)}</a></li>
-          <li><a href="index.html#contacto">✉️ Formulario de contacto</a></li>
-          <li><a href="https://wa.me/${Espiza.esc(s.whatsapp)}" target="_blank" rel="noopener"><i class="fab fa-whatsapp" style="color:#25d366;"></i> WhatsApp</a></li>
+          <li><a href="index.html#formContacto">✉️ Formulario de contacto</a></li>          <li><a href="https://wa.me/${Espiza.esc(s.whatsapp)}" target="_blank" rel="noopener"><i class="fab fa-whatsapp" style="color:#25d366;"></i> WhatsApp</a></li>
         </ul>
       </div>`;
   }

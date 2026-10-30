@@ -760,3 +760,5 @@ footer ul li a:hover { color: #4fc3f7; }
   }
   .cta-producto .btn:last-of-type { margin-bottom: 0 !important; }
 }
+/* ── Al ir al formulario, dejar espacio para el menú fijo ── */
+#formContacto { scroll-margin-top: 90px; }
